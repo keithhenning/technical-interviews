@@ -1,0 +1,7 @@
+# Adding to window
+window_sum += arr[window_end]
+window_chars[s[window_end]] = window_chars.get(s[window_end], 0) + 1
+
+# Removing from window
+window_sum -= arr[window_start]
+window_chars[s[window_start]] -= 1

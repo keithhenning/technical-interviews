@@ -1,0 +1,2 @@
+// Choose a random pivot between left and right indices
+int pivotIndex = left + rand() % (right - left + 1);

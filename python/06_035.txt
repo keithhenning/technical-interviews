@@ -1,0 +1,5 @@
+# Dijkstra - only uses g_score
+priority = g_score[current]
+
+# A* - uses f_score (g_score + heuristic)
+priority = g_score[current] + heuristic(current, goal)

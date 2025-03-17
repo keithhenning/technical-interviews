@@ -1,0 +1,2 @@
+# Instead of searching for minimum distance each time
+heapq.heappush(pq, (distance, node))

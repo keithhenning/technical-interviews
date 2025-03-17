@@ -1,0 +1,17 @@
+Input: "+ab"
+Output: 3
+Explanation: 'a' has value 1, 'b' has value 2, so 1+2=3
+
+Input: "*+ab-cd"
+Output: 9
+Explanation: This represents *(+(a,b),-(c,d))
+- 'a'=1, 'b'=2, so +(a,b)=3
+- 'c'=3, 'd'=4, so -(c,d)=-1
+- *(3,-1)=-3
+
+Input: "&#x24;*ab&cd"
+Output: 4
+Explanation: This represents &#x24;(*(a,b),&(c,d))
+- 'a'=1, 'b'=2, so *(a,b)=2
+- 'c'=3, 'd'=4, so &(c,d)=3
+- &#x24;(2,3)=3 (maximum)

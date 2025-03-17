@@ -1,0 +1,53 @@
+# Let's create a tree that shows the pre-order traversal pattern clearly:
+#       1
+#      / \
+#     2   5
+#    / \   \
+#   3   4   6
+#           /
+#          7
+
+# Create our test tree
+root = TreeNode(1)
+root.left = TreeNode(2)
+root.right = TreeNode(5)
+root.left.left = TreeNode(3)
+root.left.right = TreeNode(4)
+root.right.right = TreeNode(6)
+root.right.right.left = TreeNode(7)
+
+# Initialize our DFS tree traversal object
+dfs_tree = DFSTree()
+
+# Test both methods and compare results
+recursive_result = dfs_tree.dfs_recursive(root)
+iterative_result = dfs_tree.dfs_iterative(root)
+
+print("Recursive DFS:", recursive_result)  
+# Should print: [1, 2, 3, 4, 5, 6, 7]
+print("Iterative DFS:", iterative_result)  
+# Should print: [1, 2, 3, 4, 5, 6, 7]
+
+# Let's also test some edge cases:
+print("\nTesting edge cases:")
+
+# Empty tree
+empty_root = None
+print("Empty tree (recursive):", dfs_tree.dfs_recursive(empty_root))  # Should print: []
+print("Empty tree (iterative):", dfs_tree.dfs_iterative(empty_root))  # Should print: []
+
+# Single node tree
+single_node = TreeNode(42)
+print("Single node (recursive):", dfs_tree.dfs_recursive(single_node))  
+# Should print: [42]
+print("Single node (iterative):", dfs_tree.dfs_iterative(single_node))  
+# Should print: [42]
+
+# Linear tree (only left children)
+linear_root = TreeNode(1)
+linear_root.left = TreeNode(2)
+linear_root.left.left = TreeNode(3)
+print("Linear tree (recursive):", dfs_tree.dfs_recursive(linear_root))  
+# Should print: [1, 2, 3]
+print("Linear tree (iterative):", dfs_tree.dfs_iterative(linear_root))  
+# Should print: [1, 2, 3]

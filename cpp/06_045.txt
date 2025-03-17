@@ -1,0 +1,12 @@
+// Common initialization patterns I use
+// Opposite ends
+int left = 0;
+int right = arr.size() - 1;
+
+// Same start point
+int slow = 0;
+int fast = 0;
+
+// Adjacent start points
+int slow = 0;
+int fast = 1;

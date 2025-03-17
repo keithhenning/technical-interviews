@@ -1,0 +1,14 @@
+# Using collections.deque (preferred for performance)
+from collections import deque
+queue = deque()
+queue.append("first")         # Enqueue
+queue.append("second")        
+first_item = queue.popleft() # Dequeue (returns "first")
+
+# Using Queue for thread-safe operations
+from queue import Queue
+queue = Queue()
+queue.put("first")           # Enqueue
+queue.put("second")
+first_item = queue.get()     # Dequeue
+is_empty = queue.empty()

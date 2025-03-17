@@ -1,0 +1,7 @@
+Input: production = [4, 2, 3, 5]
+Output: resilience = [30, 60, 40, 24]
+Explanation:
+For factory 0: 2 * 3 * 5 = 30
+For factory 1: 4 * 3 * 5 = 60
+For factory 2: 4 * 2 * 5 = 40
+For factory 3: 4 * 2 * 3 = 24

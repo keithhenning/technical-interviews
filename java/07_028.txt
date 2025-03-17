@@ -1,0 +1,6 @@
+tasks = [
+    {"id": "T1", "priority": 3, "resource_needs": 5, "deadline": 10},
+    {"id": "T2", "priority": 5, "resource_needs": 3, "deadline": 5},
+    {"id": "T3", "priority": 2, "resource_needs": 2, "deadline": 7},
+    {"id": "T4", "priority": 5, "resource_needs": 1, "deadline": 3}
+]

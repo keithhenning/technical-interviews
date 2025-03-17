@@ -1,0 +1,1 @@
+current_window_size = window_end - window_start + 1

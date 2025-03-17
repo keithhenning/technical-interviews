@@ -1,0 +1,19 @@
+Input:
+Tables: [4, 6, 2, 8]  # Available table sizes
+
+Events:
+["ARRIVE", 0, "A", 3, 0, false]  # [event_type, time, customer_id, party_size, VIP_stars, has_reservation]
+["ARRIVE", 5, "B", 4, 2, true]
+["ARRIVE", 10, "C", 2, 5, false]
+["TABLE_READY", 15, 6]  # [event_type, time, table_size]
+["ARRIVE", 16, "D", 5, 3, true]
+["TABLE_READY", 20, 4]
+["TABLE_READY", 25, 2]
+["TABLE_READY", 30, 8]
+
+
+Output:
+["B", 15]  # [customer_id, time_seated]
+["D", 20]
+["C", 25]
+["A", 30]

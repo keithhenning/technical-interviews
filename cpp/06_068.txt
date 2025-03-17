@@ -1,0 +1,3 @@
+Course order (Kahn's): 1 0 3 2 4 5 
+
+Course order (DFS): 0 1 3 2 4 5

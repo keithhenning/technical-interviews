@@ -1,0 +1,21 @@
+Input:
+Detectives: 4
+Cases: 3
+Detective expertise (detective_id, type -> expertise):
+{
+  0: {'homicide': 8, 'theft': 3, 'fraud': 2},
+  1: {'homicide': 5, 'theft': 7, 'fraud': 1},
+  2: {'homicide': 2, 'theft': 4, 'fraud': 9},
+  3: {'homicide': 6, 'theft': 3, 'fraud': 4}
+}
+Communication overhead (detective pairs -> hours):
+{(0,1): 2, (0,2): 4, (0,3): 1, (1,2): 3, (1,3): 5, (2,3): 2}
+Cases (case_id, type, complexity):
+[(0, 'homicide', 40), (1, 'theft', 28), (2, 'fraud', 36)]
+
+Output: 12.5
+Explanation:
+Case 0: Assigned to detective 0 (40/8 = 5 hours)
+Case 1: Assigned to detective 1 (28/7 = 4 hours)
+Case 2: Collaboration between detectives 2 and 3 (36/(9+4) + 2 = 3.5 hours)
+Total time: max(5, 4, 3.5) = 5 hours (parallel work) + 7.5 hours (sequential work) = 12.5 hours

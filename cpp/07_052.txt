@@ -1,0 +1,29 @@
+Tree 1:
+    1
+   / \
+  2   3
+ / \
+4   5
+
+Tree 2:
+    1
+   / \
+  2   7
+ / \
+4   9
+
+Output: true
+Explanation: The path 1->2->4 exists in both trees with identical values.
+
+Tree 1:
+    1
+   / \
+  2   3
+
+Tree 2:
+    7
+   / \
+  9   1
+
+Output: false
+Explanation: No matching paths exist.

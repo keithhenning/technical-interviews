@@ -1,0 +1,15 @@
+bool is_valid_bst(
+    Node* root, 
+    int min_val = INT_MIN, int max_val = INT_MAX) {
+    if (!root) {
+        return true;
+    }
+    
+    if (root->value <= min_val || 
+        root->value >= max_val) {
+        return false;
+    }
+    
+    return (is_valid_bst(root->left, min_val,root->value) && 
+            is_valid_bst(root->right, root->value, max_val));
+}

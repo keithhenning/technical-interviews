@@ -1,0 +1,2 @@
+// Use priority queue for efficient minimum node retrieval
+pq.push({distance, node});

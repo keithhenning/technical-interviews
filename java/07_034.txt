@@ -1,0 +1,11 @@
+Input: nums = [1, 2, 3, 4, 1], k = 3
+Output: false
+Explanation: No duplicates exist within any 3-element subarray.
+
+Input: nums = [5, 1, 4, 1, 7], k = 3
+Output: true
+Explanation: [1, 4, 1] contains a duplicate (1).
+
+Input: nums = [3, 3, 3], k = 2
+Output: true
+Explanation: Any 2-element subarray contains a duplicate (3).

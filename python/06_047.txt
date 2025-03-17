@@ -1,0 +1,4 @@
+# Key conditions to check
+while left < right:  # For opposite direction
+while fast < len(arr):  # For same direction
+while slow < fast:  # For gap maintenance

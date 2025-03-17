@@ -1,0 +1,9 @@
+# Test empty tree
+empty_root = None
+print("Empty tree:", breadth_first_search(empty_root))  
+# Should print: []
+
+# Test single node tree
+single_node = TreeNode(42)
+print("Single node tree:", breadth_first_search(single_node))  
+# Should print: [[42]]

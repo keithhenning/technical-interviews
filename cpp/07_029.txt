@@ -1,0 +1,15 @@
+nodes = 3
+operations = [
+    (0, "x", 10, 1),  # Node 0 sets x=10 at time 1
+    (1, "y", 20, 2),  # Node 1 sets y=20 at time 2
+    (2, "x", 30, 3),  # Node 2 sets x=30 at time 3
+    (0, "y", 40, 4)   # Node 0 sets y=40 at time 4
+]
+delays = [
+    [0, 2, 3],  # Delays from node 0 to others
+    [2, 0, 1],  # Delays from node 1 to others
+    [3, 1, 0]   # Delays from node 2 to others
+]
+
+Expected output:
+[{"x": 30, "y": 40}, {"x": 30, "y": 40}, {"x": 30, "y": 40}]

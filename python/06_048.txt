@@ -1,0 +1,4 @@
+# When to move pointers
+if condition:
+    left += 1  # Move left pointer right
+    right -= 1  # Move right pointer left

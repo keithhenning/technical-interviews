@@ -1,0 +1,4 @@
+tasks = ['A', 'A', 'B', 'C', 'A', 'B']
+n = 2
+
+Expected Output: 7

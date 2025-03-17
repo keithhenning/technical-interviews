@@ -1,0 +1,7 @@
+Input: [5, 2, 9, 11, 3]
+Output: 17
+Explanation: Steal from rooms 0, 2, and 4 (values 5, 9, and 3)
+
+Input: [2, 7, 9, 3, 1]
+Output: 12
+Explanation: Steal from rooms 0, 2, and 4 (values 2, 9, and 1)

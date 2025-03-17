@@ -1,0 +1,11 @@
+cache = IntelligentCache(capacity=3) 
+cache.put(1, "A")  
+// Cache: {1: "A"} 
+cache.put(2, "B")  
+// Cache: {1: "A", 2: "B"} 
+cache.get(1)       
+// Returns "A", Cache: {1: "A", 2: "B"} (1's frequency increases) 
+cache.put(3, "C")  
+// Cache: {1: "A", 2: "B", 3: "C"} 
+cache.put(4, "D")  
+// Cache is full, evict least valuable item (2), Cache: {1: "A", 3: "C", 4: "D"}

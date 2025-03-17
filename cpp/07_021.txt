@@ -1,0 +1,10 @@
+Input:
+evidence = [
+  {"id": "E1", "importance": 80, "processing_time": 4, "days_until_expiration": 3},
+  {"id": "E2", "importance": 90, "processing_time": 6, "days_until_expiration": 5},
+  {"id": "E3", "importance": 40, "processing_time": 2, "days_until_expiration": 1},
+  {"id": "E4", "importance": 70, "processing_time": 3, "days_until_expiration": 2}
+]
+available_hours_per_day = 8
+
+Output: ["E3", "E4", "E1", "E2"]

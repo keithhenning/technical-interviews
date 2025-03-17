@@ -1,0 +1,5 @@
+# When high performance matters
+from collections import deque  # Use this!
+
+# When thread safety matters
+from queue import Queue  # Use this!

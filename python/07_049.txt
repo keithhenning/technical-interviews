@@ -1,0 +1,15 @@
+Original tree visualization:
+     1
+   /   \
+  2     3
+ / \     \
+4   5     6
+
+With connections (shown as dotted lines):
+1 --> 3
+2 --> 5
+3 --> 4
+5 --> 1
+6 --> 2
+
+Output: Return a deep copy of the tree with all connections preserved.

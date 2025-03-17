@@ -1,0 +1,6 @@
+# Use a binary heap instead of sorting open set
+from heapq import heappush, heappop
+
+open_set = []
+heappush(open_set, (f_score, node))
+current = heappop(open_set)[1]

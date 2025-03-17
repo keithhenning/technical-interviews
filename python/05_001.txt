@@ -1,0 +1,5 @@
+# Creating a list (Python's array)
+numbers = [1, 2, 3, 4, 5]
+# Dynamic operations
+numbers.append(6)    # Adds to end
+numbers.insert(0, 0) # Adds at beginning

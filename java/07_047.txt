@@ -1,0 +1,16 @@
+Input: 
+["ConfigStore", "set", "set", "set", "get", "get", "get", "get"]
+[[], ["ui.theme", 1, "dark"], ["ui.theme", 3, "light"], ["api.timeout", 2, "30s"], ["ui.theme", 2], ["ui.theme", 5], ["api.timeout", 1], ["api.retry", 1]]
+
+Output:
+[null, null, null, null, "dark", "light", "", ""]
+
+Explanation:
+ConfigStore configStore = new ConfigStore();
+configStore.set("ui.theme", 1, "dark");    // Set ui.theme for version 1 to "dark"
+configStore.set("ui.theme", 3, "light");   // Set ui.theme for version 3 to "light"
+configStore.set("api.timeout", 2, "30s");  // Set api.timeout for version 2 to "30s"
+configStore.get("ui.theme", 2);            // return "dark" (highest version <= 2 is 1)
+configStore.get("ui.theme", 5);            // return "light" (highest version <= 5 is 3)
+configStore.get("api.timeout", 1);         // return "" (no version <= 1)
+configStore.get("api.retry", 1);           // return "" (feature not found)

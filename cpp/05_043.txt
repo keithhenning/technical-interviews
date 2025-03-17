@@ -1,0 +1,11 @@
+class BinaryNode {
+public:
+    int value;
+    BinaryNode* left;   // Left child
+    BinaryNode* right;  // Right child
+    
+    BinaryNode(int val) : 
+        value(val), 
+        left(nullptr), 
+        right(nullptr) {}
+};

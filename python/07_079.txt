@@ -1,0 +1,9 @@
+Input: prices = [2, 5, 1, 8, 3, 4, 6, 7], k = 3
+Output: [5, 8, 8, 24, 18, 28]
+Explanation:
+Window [2, 5, 1] &#x2192; max = 5, min = 1, product = 5
+Window [5, 1, 8] &#x2192; max = 8, min = 1, product = 8
+Window [1, 8, 3] &#x2192; max = 8, min = 1, product = 8
+Window [8, 3, 4] &#x2192; max = 8, min = 3, product = 24
+Window [3, 4, 6] &#x2192; max = 6, min = 3, product = 18
+Window [4, 6, 7] &#x2192; max = 7, min = 4, product = 28

@@ -1,0 +1,7 @@
+Input: [2, 1, 5, 6, 2, 3]
+Output: 10
+Explanation: The optimal segment is workstations [1, 5, 6, 2, 3] with minimum capacity 1 and length 5, giving 1×5=5; alternatively, [5, 6, 2] with minimum capacity 2 and length 3, giving 2×3=6; or optimally [5, 6] with minimum capacity 5 and length 2, giving 5×2=10.
+
+Input: [3, 3, 3, 2, 5]
+Output: 9
+Explanation: The optimal segment is workstations [3, 3, 3] with minimum capacity 3 and length 3, giving 3×3=9.

@@ -1,0 +1,12 @@
+Input:
+
+relationships = [
+  [0, 3, 1, 8, 2],
+  [3, 0, 5, 2, 7],
+  [1, 5, 0, 4, 6],
+  [8, 2, 4, 0, 1],
+  [2, 7, 6, 1, 0]
+]
+tables = 2, seats_per_table = 3
+
+Output: 32

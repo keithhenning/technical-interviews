@@ -1,0 +1,13 @@
+void remove(int target) {
+    Node* current = head;
+    Node* prev = nullptr;
+    while (current) {
+        if (current->data == target) {
+            prev->next = current->next;
+            delete current;
+            break;
+        }
+        prev = current;
+        current = current->next;
+    }
+}

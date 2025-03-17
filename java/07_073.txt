@@ -1,0 +1,3 @@
+Input: joyRatings = [4, 2, 7, 5, 9, 8, 3, 1], minCards = 3, maxCards = 5 
+
+Output: 24

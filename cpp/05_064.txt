@@ -1,0 +1,3 @@
+bool should_resize() {
+    return static_cast<double>(size) / buckets.size() > 0.75;
+}

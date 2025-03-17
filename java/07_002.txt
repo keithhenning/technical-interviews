@@ -1,0 +1,7 @@
+Input: prices = [23, 45, 12, 18, 7], budget = 30
+Output: [0, 4]
+Explanation: The prices at indices 0 and 4 add up exactly to the budget: 23 + 7 = 30
+
+Input: prices = [150, 24, 79, 50, 88, 345, 3], budget = 200
+Output: [0, 3]
+Explanation: The prices at indices 0 and 3 add up exactly to the budget: 150 + 50 = 200

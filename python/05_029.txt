@@ -1,0 +1,5 @@
+# A user favoriting movies
+movie_favorites = {
+    "Billy": ["Rocky III", "China Town"],
+    "Kathryn": ["China Town", "Planet of the Apes"]
+}

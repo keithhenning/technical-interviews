@@ -1,0 +1,18 @@
+Input: 
+target = 12
+positions = [10, 8, 0, 5, 3]
+speeds = [2, 4, 1, 1, 3]
+Output: 3
+Explanation:
+- Vehicle at position 10 with speed 2 reaches the target in (12-10)/2 = 1 time unit
+- Vehicle at position 8 with speed 4 reaches the target in (12-8)/4 = 1 time unit (forms a convoy with the first vehicle)
+- Vehicle at position 0 with speed 1 reaches the target in 12 time units (forms its own convoy)
+- Vehicle at position 5 with speed 1 reaches the target in 7 time units (forms its own convoy)
+- Vehicle at position 3 with speed 3 reaches the target in 3 time units (forms its own convoy)
+
+Input:
+target = 100
+positions = [0, 2, 4]
+speeds = [4, 2, 1]
+Output: 1
+Explanation: All vehicles eventually form a single convoy behind the slowest vehicle.

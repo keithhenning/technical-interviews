@@ -1,0 +1,3 @@
+bool is_empty() {
+    return root == nullptr;
+}

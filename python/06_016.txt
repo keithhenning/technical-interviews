@@ -1,0 +1,5 @@
+# Bad: Using list as queue
+queue = []  # pop(0) is *O*(n)
+
+# Good: Using deque
+queue = deque()  # popleft() is *O*(1)

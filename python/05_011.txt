@@ -1,0 +1,5 @@
+empty_stack = []
+try:
+    empty_stack.pop()  # Throws IndexError
+except IndexError:
+    print("Handle empty stack!")

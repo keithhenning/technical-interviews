@@ -1,0 +1,5 @@
+# Common pattern I use for state tracking
+window_sum = 0  # For sum-based problems
+window_chars = {}  # For character frequency
+max_seen = float('-inf')  # For maximum calculations
+min_seen = float('inf')  # For minimum calculations

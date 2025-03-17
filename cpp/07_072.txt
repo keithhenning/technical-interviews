@@ -1,0 +1,5 @@
+Input: 
+acidity = [3.2, 4.5, 5.0, 5.8, 6.3, 7.1], targetAcidity = 5.65 
+
+Output: 
+true

@@ -1,0 +1,2 @@
+# Isolate rightmost set bit
+rightmost_bit = n & -n

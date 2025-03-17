@@ -1,0 +1,4 @@
+# Common initialization patterns I use
+left, right = 0, len(arr) - 1  # Opposite ends
+slow = fast = 0  # Same start point
+slow, fast = 0, 1  # Adjacent start points

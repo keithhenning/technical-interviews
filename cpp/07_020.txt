@@ -1,0 +1,6 @@
+RateLimiter limiter = new RateLimiter(2, 10); // 2 messages per 10 seconds
+limiter.canSend("user1", 0); // returns true
+limiter.canSend("user1", 1); // returns true
+limiter.canSend("user1", 2); // returns false
+limiter.canSend("user2", 2); // returns true
+limiter.canSend("user1", 11); // returns true (new window)

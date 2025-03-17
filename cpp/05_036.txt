@@ -1,0 +1,9 @@
+void addEdge(int v1, int v2) {
+    if (graph.find(v1) == graph.end()) {
+        addVertex(v1);
+    }
+    if (graph.find(v2) == graph.end()) {
+        addVertex(v2);
+    }
+    graph[v1].push_back(v2);
+}

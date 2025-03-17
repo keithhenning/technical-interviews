@@ -1,0 +1,12 @@
+def is_valid_bst(root, min_val=float('-inf'), max_val=float('inf')):
+  # Handle empty tree
+  if not root:
+     return True
+  
+  # Check current node's value bounds
+  if root.key <= min_val or root.key >= max_val:
+     return False
+  
+  # Recursively validate left and right subtrees
+  return (is_valid_bst(root.left, min_val, root.key) and 
+          is_valid_bst(root.right, root.key, max_val))

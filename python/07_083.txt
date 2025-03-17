@@ -1,0 +1,5 @@
+Input: 
+Lineup: A(0.275) &#x2192; B(0.305) &#x2192; C(0.330) &#x2192; D(0.290) &#x2192; E(0.260) &#x2192; A..., k=2, m=3 
+
+Output: 
+"C" (After rotating by 2, the lineup window of size 3 is C(0.330) &#x2192; D(0.290) &#x2192; E(0.260), and C has the highest average)

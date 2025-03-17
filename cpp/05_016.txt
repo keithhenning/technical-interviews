@@ -1,0 +1,3 @@
+bool isEmpty() {
+    return queue.empty();
+}

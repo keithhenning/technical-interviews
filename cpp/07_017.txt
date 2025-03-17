@@ -1,0 +1,7 @@
+Input: tasks = {
+    "A": [],
+    "B": ["A"],
+    "C": ["A"],
+    "D": ["B", "C"],
+}
+Output: ["A", "B", "C", "D"] or ["A", "C", "B", "D"] (both are valid)

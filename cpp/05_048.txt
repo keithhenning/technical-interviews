@@ -1,0 +1,4 @@
+// Always clean up in destructor
+~BinaryTree() {
+    destroyTree(root);
+}

@@ -1,0 +1,19 @@
+def lengthOfLongestSubstring(s: str) -> int:
+   char_index = {}
+   max_length = 0
+   window_start = 0
+   
+   for window_end in range(len(s)):
+      # If we've seen this character before in our current window
+      if (s[window_end] in char_index and 
+          char_index[s[window_end]] >= window_start):
+         window_start = char_index[s[window_end]] + 1
+      else:
+         max_length = max(
+            max_length, 
+            window_end - window_start + 1
+         )
+      
+      char_index[s[window_end]] = window_end
+   
+   return max_length

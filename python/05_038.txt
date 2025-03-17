@@ -1,0 +1,10 @@
+# Create a social network
+social_graph = Graph()
+
+# Add some connections
+social_graph.add_edge("Alice", "Bob")
+social_graph.add_edge("Alice", "Charlie")
+social_graph.add_edge("Bob", "David")
+
+# Explore connections starting from Alice
+social_graph.bfs("Alice")  # Output: Alice Bob Charlie David

@@ -1,0 +1,10 @@
+# Creating a trie and inserting words
+trie = Trie()
+trie.insert("apple")
+trie.insert("app")
+trie.insert("apricot")
+
+print(trie.search("apple"))     # True
+print(trie.search("app"))       # True
+print(trie.search("appl"))      # False
+print(trie.startsWith("app"))   # True

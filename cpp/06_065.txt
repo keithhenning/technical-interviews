@@ -1,0 +1,38 @@
+/**
+* Get all words with the given prefix
+*/
+public List<String> getAllWordsWithPrefix(String prefix) {
+    List<String> result = new ArrayList<>();
+    
+    // First find the node that represents the prefix
+    TrieNode current = root;
+    for (char c : prefix.toCharArray()) {
+        if (!current.children.containsKey(c)) {
+            return result; // Prefix not found, return empty list
+        }
+        current = current.children.get(c);
+    }
+    
+    // Then traverse from that node to collect all complete words
+    collectWords(current, new StringBuilder(prefix), result);
+    
+    return result;
+}
+
+/**
+* Helper method to collect all words starting from a node
+*/
+private void collectWords(TrieNode node, StringBuilder prefix, 
+                         List<String> result) {
+    if (node.isEnd) {
+        result.add(prefix.toString());
+    }
+    
+    for (Map.Entry<Character, TrieNode> entry : 
+         node.children.entrySet()) {
+        char c = entry.getKey();
+        prefix.append(c);
+        collectWords(entry.getValue(), prefix, result);
+        prefix.deleteCharAt(prefix.length() - 1); // Backtrack
+    }
+}

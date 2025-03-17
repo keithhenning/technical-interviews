@@ -1,0 +1,5 @@
+Initial array: [3, 2, 1, 5, 6, 4]
+Choose pivot (4)
+After partitioning: [3, 2, 1, 4, 6, 5]
+                              ^ now the pivot is at index 3
+We want k=2, which is smaller than 3, so we only look at [3, 2, 1]

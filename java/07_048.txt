@@ -1,0 +1,18 @@
+Input: tasks = [10, 20, 30, 40], maxSeconds = 5
+Output: 30
+Explanation:
+With a processing power of 24 cycles per second:
+- Task 1 (10 cycles) takes ceil(10/24) = 1 second
+- Task 2 (20 cycles) takes ceil(20/24) = 1 second
+- Task 3 (30 cycles) takes ceil(30/24) = 2 seconds
+- Task 4 (40 cycles) takes ceil(40/24) = 2 seconds
+Total: 1 + 1 + 2 + 2 = 6 seconds (exceeds limit)
+
+With a processing power of 30 cycles per second:
+- Task 1 (10 cycles) takes ceil(10/30) = 1 second
+- Task 2 (20 cycles) takes ceil(20/30) = 1 second
+- Task 3 (30 cycles) takes ceil(30/30) = 1 second
+- Task 4 (40 cycles) takes ceil(40/30) = 2 seconds
+Total: 1 + 1 + 1 + 2 = 5 seconds (meets limit)
+
+Therefore, 30 is the minimum processing power required.

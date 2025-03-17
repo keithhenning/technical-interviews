@@ -1,0 +1,2 @@
+Input: n = 6
+Output: 8

@@ -1,0 +1,9 @@
+Input: nums = [3, 2, 4, 8, 1, 5], k = 3
+Output: 9
+Explanation: One optimal grouping is [3, 2, 4], [8, 1], [5]
+The maximum sum is 9 (from the first group).
+
+Input: nums = [1, 2, 3, 4, 5, 6, 7, 8, 9], k = 5
+Output: 11
+Explanation: One optimal grouping is [1, 2, 3, 4], [5, 6], [7], [8], [9]
+The maximum sum is 11 (from the second group).

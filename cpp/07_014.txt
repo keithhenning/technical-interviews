@@ -1,0 +1,2 @@
+Input: "allapples"
+Output: 7` (index of 'e')

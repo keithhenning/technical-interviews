@@ -1,0 +1,16 @@
+// Initialize editor with empty text
+LineTracker editor = new LineTracker();
+
+// Insert text with newlines
+editor.insert(0, "Hello\nWorld\nHow are you?");
+
+// Get line number for position
+editor.getLineNumber(0);  // Returns 1 (first line)
+editor.getLineNumber(7);  // Returns 2 (second line)
+editor.getLineNumber(15); // Returns 3 (third line)
+
+// Delete text across a line break
+editor.delete(5, 7);      // Delete "World\n" leaving "Hello\nHow are you?"
+
+// Get updated line numbers
+editor.getLineNumber(7);  // Returns 2 (now on the second line)

@@ -1,0 +1,3 @@
+Input: document = "aabcbcdbca", tokens = "abcd"
+Output: "dbca"
+Explanation: "dbca" is the shortest substring containing all characters in "abcd".

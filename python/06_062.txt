@@ -1,0 +1,29 @@
+Testing different board sizes:
+
+Testing 1x1 board:
+Q
+
+Testing 2x2 board:
+No solution exists
+
+Testing 3x3 board:
+No solution exists
+
+Testing 4x4 board:
+..Q.
+Q...
+...Q
+.Q..
+
+Testing 8x8 board:
+Q.......
+......Q.
+....Q...
+.......Q
+.Q......
+...Q....
+.....Q..
+..Q.....
+......
+-------------------------------------------------------------------
+Ran 6 tests in 0.001s

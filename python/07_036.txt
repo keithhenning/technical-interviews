@@ -1,0 +1,11 @@
+Input: [1, 8, 6, 2, 5, 4, 8, 3, 7]
+Output: 49
+Explanation: The optimal platforms are at positions 1 and 8 (heights 8 and 7), with area = 7 * 7 = 49
+
+Input: [4, 3, 2, 1, 4]
+Output: 16
+Explanation: The optimal platforms are at positions 0 and 4 (both height 4), with area = 4 * 4 = 16
+
+Input: [1, 2, 1]
+Output: 2
+Explanation: The optimal platforms are at positions 0 and 2 (both height 1), with area = 1 * 2 = 2

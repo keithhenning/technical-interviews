@@ -1,0 +1,16 @@
+Current array: [3, 2, 1, 5, 6, 4]  (pivot = 4 is at the end)
+storeIndex = 0
+
+i=0: arr[0]=3 < 4? Yes → swap arr[0] with arr[storeIndex] → [3, 2, 1, 5, 6, 4] (no change)
+     increment storeIndex to 1
+
+i=1: arr[1]=2 < 4? Yes → swap arr[1] with arr[storeIndex] → [3, 2, 1, 5, 6, 4] (no change)
+     increment storeIndex to 2
+
+i=2: arr[2]=1 < 4? Yes → swap arr[2] with arr[storeIndex] → [3, 2, 1, 5, 6, 4] (no change)
+     increment storeIndex to 3
+
+i=3: arr[3]=5 < 4? No → do nothing
+i=4: arr[4]=6 < 4? No → do nothing
+
+After iterating, storeIndex = 3

@@ -1,0 +1,6 @@
+public static int countBitsToFlip(int a, int b) {
+   // XOR gives 1 for bits that are different
+   int xorResult = a ^ b;
+   // Count the set bits in the XOR result
+   return countSetBits(xorResult);
+}

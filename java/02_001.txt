@@ -1,0 +1,22 @@
+# Project Title
+
+## Quick Start
+[Clear setup instructions]
+
+## Problem Understanding
+[How you interpreted the requirements]
+
+## Solution Approach
+[Your overall strategy]
+
+## Implementation Details
+[Key components and how they work together]
+
+## Decisions and Trade-offs
+[Explain why you made certain choices]
+
+## Future Improvements
+[What you'd enhance with more time]
+
+## Testing Strategy
+[How you verified correctness]

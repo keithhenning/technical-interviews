@@ -1,0 +1,7 @@
+Input: hashtags = ["tech", "coding", "tech", "career", "coding", "tech", "lifestyle"], k = 2
+Output: ["tech", "coding"]
+Explanation: "tech" appears 3 times, "coding" appears 2 times, and others appear once.
+
+Input: hashtags = ["travel", "food", "travel", "photography", "food", "travel", "travel", "food", "vacation"], k = 3
+Output: ["travel", "food", "photography"]
+Explanation: "travel" appears 4 times, "food" appears 3 times, others appear once.

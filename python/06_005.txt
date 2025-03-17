@@ -1,0 +1,2 @@
+if high - low <= 10:
+    insertion_sort(arr, low, high)

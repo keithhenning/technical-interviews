@@ -1,0 +1,15 @@
+Input:
+dictionary = ["apple", "appeal", "banana", "append", "app", "ape"]
+query = "apple"
+k = 1
+
+Output: ["apple", "appeal", "append"]
+Explanation: "apple" has 1 substitution ('e'->'a'), "appeal" and "append" both have 1 substitution.
+
+Input:
+dictionary = ["cat", "chat", "hat", "bat", "rat", "mat"]
+query = "fat"
+k = 2
+
+Output: ["bat", "cat", "hat", "mat", "rat", "chat"]
+Explanation: The first 5 words have 1 substitution, and "chat" has 2 substitutions.

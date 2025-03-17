@@ -1,0 +1,18 @@
+# Creating a course prerequisite graph
+g = Graph(6)  # 6 courses numbered 0 to 5
+
+# Adding prerequisites (edges)
+g.add_edge(5, 2)  # Algorithms requires Data Structures
+g.add_edge(5, 0)  # Algorithms requires Programming Basics
+g.add_edge(4, 0)  # Advanced Programming requires Programming Basics
+g.add_edge(4, 1)  # Advanced Programming requires Computer Architecture
+g.add_edge(2, 3)  # Data Structures requires Discrete Math
+g.add_edge(3, 1)  # Discrete Math requires Computer Architecture
+
+# Get course order using Kahn's algorithm
+course_order = g.topological_sort_kahn()
+print("Course order:", course_order)
+
+# Get course order using BFS
+course_order = g.topological_sort_dfs()
+print("Course order:", course_order)

@@ -1,0 +1,12 @@
+Input: "()"
+Output: ["()()", "(())", "()[()]", "(){}", "[()]", "{()}"]
+Explanation: 
+- Adding () outside: "()()"
+- Adding () inside: "(())"
+- Adding [] outside: "[()]"
+- Adding {} outside: "{()}"
+- Adding {} inside: "(){}"
+- Adding [] inside: "()[()]"
+
+Input: "{[]}"
+Output: ["{[]}{}", "{[]}()", "{[][]}","{[{}]}", "[{[]}]", "({[]})", ...]
