@@ -1,2 +1,2 @@
 # technical-interviews
-Code supplement to the book "Crushing your Technical Interview: Data Structures and Algorithms"
+Code supplement to the book series "Crushing your Technical Interview"
