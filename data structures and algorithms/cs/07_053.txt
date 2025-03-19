@@ -1,0 +1,31 @@
+Input:
+    1
+   / \
+  2   3
+ /     \
+4       5
+
+Output:
+    1
+   / \
+  2   2
+ / \   \
+4   4   4
+
+Explanation: The tree wasn't symmetric initially. The algorithm mirrors node 2 and its child 4 and replaces node 3 with a mirror of node 2.
+
+Input:
+    1
+   / \
+  2   2
+   \   \
+    3   3
+
+Output:
+    1
+   / \
+  2   2
+ / \   \
+3   3   3
+
+Explanation: The top level was symmetric, but the children of node 2 weren't balanced, so a mirror child was added.

@@ -1,0 +1,15 @@
+Input: str1 = "abba", str2 = "deed"
+Output: true
+Explanation: 'a' maps to 'd', 'b' maps to 'e'
+
+Input: str1 = "aaaa", str2 = "bbbb"
+Output: true
+Explanation: 'a' maps to 'b'
+
+Input: str1 = "abcd", str2 = "aabb"
+Output: false
+Explanation: No valid mapping exists - both 'c' and 'd' would need to map to the same character
+
+Input: str1 = "abba", str2 = "abcd"
+Output: false
+Explanation: No valid mapping exists - 'a' cannot map to both 'a' and 'd'

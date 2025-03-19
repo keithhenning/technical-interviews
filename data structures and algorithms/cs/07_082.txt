@@ -1,0 +1,3 @@
+Input: 1(false) &#x2192; 2(true) &#x2192; 3(false) &#x2192; 4(true) &#x2192; 5(false) 
+
+Output: 2(true) &#x2192; 4(true) &#x2192; 1(false) &#x2192; 3(false) &#x2192; 5(false)

@@ -1,0 +1,39 @@
+Input:
+      5
+     / \
+    3   6
+   / \   \
+  2   4   8
+ /       / \
+1       7   9
+k = 1
+
+Output: 2
+Explanation: Remove the node with value 8, resulting in a tree with height 2:
+      5
+     / \
+    3   6
+   / \   
+  2   4   
+ /       
+1       
+
+Input:
+         10
+        /  \
+       5    15
+      / \   / \
+     3   8 12  20
+    /   /      / \
+   1   6      18  25
+k = 2
+
+Output: 2
+Explanation: Remove nodes with values 3 and 20, resulting in a tree with height 2:
+         10
+        /  \
+       5    15
+        \   / 
+         8 12  
+        /      
+       6

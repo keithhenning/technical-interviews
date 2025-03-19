@@ -1,0 +1,17 @@
+Input: "babad"
+Output: "bab" or "aba"
+
+Input: "cbbd"
+Output: "bb"
+
+Input: "racecar"
+Output: "racecar"
+
+Input: "forgeeksskeegfor" 
+Output: "geeksskeeg"
+
+Input: "a"
+Output: "a"
+
+Input: "aacabdkacaa"
+Output: "aca"

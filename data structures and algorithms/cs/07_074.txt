@@ -1,0 +1,6 @@
+Operations:
+addItem("shirt", 8)
+addItem("pants", 6)
+addItem("shirt", 4)
+addItem("jacket", 9)
+findAndRemoveType("shirt") // Should return the shirt with popularity 8, not 4

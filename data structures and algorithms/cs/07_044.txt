@@ -1,0 +1,19 @@
+Input: batches = [10, 20, 30], h = 6
+Output: 10
+Explanation: 
+With speed 10 pages/hour:
+- First batch (10 pages): 1 hour
+- Second batch (20 pages): 2 hours (needs ceiling(20/10))
+- Third batch (30 pages): 3 hours (needs ceiling(30/10))
+Total: 6 hours
+
+Input: batches = [30, 11, 23, 4, 20], h = 5
+Output: 30
+Explanation: 
+With speed 30 pages/hour:
+- Batch 1 (30 pages): 1 hour
+- Batch 2 (11 pages): 1 hour
+- Batch 3 (23 pages): 1 hour
+- Batch 4 (4 pages): 1 hour
+- Batch 5 (20 pages): 1 hour
+Total: 5 hours

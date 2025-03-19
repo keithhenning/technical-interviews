@@ -1,0 +1,37 @@
+Input:
+       10
+      /
+     8
+    /
+   6
+  /
+ 4
+
+Output (one possible solution):
+     6
+   /   \
+  4     10
+       /
+      8
+
+Explanation: The original tree is 4 feet tall, while the balanced tree is 3 feet tall.
+
+Input:
+      5
+     / \
+    3   8
+   /     \
+  1       9
+   \
+    2
+
+Output (one possible solution):
+      5
+     / \
+    2   9
+   / \
+  1   3
+     /
+    8
+
+Explanation: The original tree is 4 feet tall, while the balanced tree is 3 feet tall.

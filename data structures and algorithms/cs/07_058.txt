@@ -1,0 +1,13 @@
+Input:
+addToHistory(["apple", "application", "banana", "art", "applied", "apple"])
+suggest("ap")
+
+Output: ["apple", "application", "applied"]
+Explanation: "apple" comes first because it appears in the history (and most recently), followed by "application" and "applied" alphabetically.
+
+Input:
+addToHistory(["code", "coffee", "coding", "coder", "cafe"])
+suggest("co")
+
+Output: ["code", "coffee", "coding", "coder"]
+Explanation: All suggestions start with "co" from the history, sorted by their order of appearance.
