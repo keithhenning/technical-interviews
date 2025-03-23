@@ -1,24 +1,29 @@
 using System;
 using System.Collections.Generic;
 
-public class Graph {
+public class Graph
+{
    private Dictionary<string, List<Edge>> graph;
 
-   public Graph() {
+   public Graph()
+   {
       graph = new Dictionary<string, List<Edge>>();
    }
 
    public void AddEdge(
-      string fromNode, 
-      string toNode, 
+      string fromNode,
+      string toNode,
       int weight
-   ) {
-      if (!graph.ContainsKey(fromNode)) {
+   )
+   {
+      if (!graph.ContainsKey(fromNode))
+      {
          graph[fromNode] = new List<Edge>();
       }
       graph[fromNode].Add(new Edge(toNode, weight));
 
-      if (!graph.ContainsKey(toNode)) {
+      if (!graph.ContainsKey(toNode))
+      {
          graph[toNode] = new List<Edge>();
       }
    }
@@ -27,10 +32,12 @@ public class Graph {
       string restaurant,
       string customer,
       Dictionary<string[], TrafficData> trafficData
-   ) {
+   )
+   {
       var graph = new Graph();
 
-      foreach (var entry in trafficData) {
+      foreach (var entry in trafficData)
+      {
          var road = entry.Key;
          var traffic = entry.Value;
          var time = CalculateTravelTime(traffic);
@@ -45,36 +52,37 @@ public class Graph {
 
    private static int CalculateTravelTime(
       TrafficData traffic
-   ) {
+   )
+   {
       return 0;
    }
 
-   private class Edge {
+   private class Edge
+   {
       public string Destination { get; }
       public int Weight { get; }
 
-      public Edge(string destination, int weight) {
+      public Edge(string destination, int weight)
+      {
          Destination = destination;
          Weight = weight;
       }
    }
 
-   public KeyValuePair<
-      Dictionary<string, int>,
-      Dictionary<string, List<string>>
-   > Dijkstra(string start) {
+   public KeyValuePair<Dictionary<string, int>,
+      Dictionary<string, List<string>
+      >> Dijkstra(string start)
+   {
       var distances = new Dictionary<string, int>();
-      foreach (var node in graph.Keys) {
+      foreach (var node in graph.Keys)
+      {
          distances[node] = int.MaxValue;
       }
       distances[start] = 0;
 
-      var pq = new PriorityQueue<
-         KeyValuePair<int, string>, 
-         int
-      >();
+      var pq = new PriorityQueue<KeyValuePair<int, string>, int>();
       pq.Enqueue(
-         new KeyValuePair<int, string>(0, start), 
+         new KeyValuePair<int, string>(0, start),
          0
       );
 
@@ -82,21 +90,25 @@ public class Graph {
       var startPath = new List<string> { start };
       paths[start] = startPath;
 
-      while (pq.Count > 0) {
+      while (pq.Count > 0)
+      {
          var current = pq.Dequeue();
          var currentNode = current.Value;
          var currentDistance = current.Key;
 
-         if (currentDistance > distances[currentNode]) {
+         if (currentDistance > distances[currentNode])
+         {
             continue;
          }
 
-         foreach (var edge in graph[currentNode]) {
+         foreach (var edge in graph[currentNode])
+         {
             var neighbor = edge.Destination;
             var weight = edge.Weight;
             var distance = currentDistance + weight;
 
-            if (distance < distances[neighbor]) {
+            if (distance < distances[neighbor])
+            {
                distances[neighbor] = distance;
                var newPath = new List<string>(
                   paths[currentNode]
@@ -104,7 +116,7 @@ public class Graph {
                paths[neighbor] = newPath;
                pq.Enqueue(
                   new KeyValuePair<int, string>(
-                     distance, 
+                     distance,
                      neighbor
                   ),
                   distance
@@ -120,5 +132,6 @@ public class Graph {
    }
 }
 
-public class TrafficData {
+public class TrafficData
+{
 }

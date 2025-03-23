@@ -1,65 +1,65 @@
 public IEnumerator<int> DfsWithYield(TreeNode node)
 {
-    // Create and return an IEnumerator implementation
-    return new Enumerator(node);
+   // Create and return an IEnumerator implementation
+   return new Enumerator(node);
 }
 
 private class Enumerator : IEnumerator<int>
 {
-    private Stack<object> stack = new Stack<object>();
-    private int current;
+   private Stack<object> stack = new Stack<object>();
+   private int current;
 
-    public Enumerator(TreeNode node)
-    {
-        // Initialize with the root node
-        if (node != null)
-        {
-            stack.Push(node);
-        }
-    }
+   public Enumerator(TreeNode node)
+   {
+      // Initialize with the root node
+      if (node != null)
+      {
+         stack.Push(node);
+      }
+   }
 
-    public bool MoveNext()
-    {
-        while (stack.Count > 0)
-        {
-            object current = stack.Pop();
+   public bool MoveNext()
+   {
+      while (stack.Count > 0)
+      {
+         object current = stack.Pop();
 
-            // If current is a node, push its value and children
-            if (current is TreeNode currentNode)
+         // If current is a node, push its value and children
+         if (current is TreeNode currentNode)
+         {
+            // Push right child first (LIFO)
+            if (currentNode.Right != null)
             {
-                // Push right child first (LIFO)
-                if (currentNode.Right != null)
-                {
-                    stack.Push(currentNode.Right);
-                }
-
-                // Push left child
-                if (currentNode.Left != null)
-                {
-                    stack.Push(currentNode.Left);
-                }
-
-                // Push the value to return
-                stack.Push(currentNode.Value);
+               stack.Push(currentNode.Right);
             }
-            else
+
+            // Push left child
+            if (currentNode.Left != null)
             {
-                // Return the value
-                this.current = (int)current;
-                return true;
+               stack.Push(currentNode.Left);
             }
-        }
-        return false;
-    }
 
-    public int Current => current;
+            // Push the value to return
+            stack.Push(currentNode.Value);
+         }
+         else
+         {
+            // Return the value
+            this.current = (int)current;
+            return true;
+         }
+      }
+      return false;
+   }
 
-    object IEnumerator.Current => Current;
+   public int Current => current;
 
-    public void Dispose() { }
+   object IEnumerator.Current => Current;
 
-    public void Reset()
-    {
-        throw new NotSupportedException();
-    }
+   public void Dispose() { }
+
+   public void Reset()
+   {
+      throw new NotSupportedException();
+   }
 }

@@ -1,18 +1,23 @@
-using System;
-using System.Collections.Generic;
+public class LinearTime {
+   public static int FindMaximum(int[] arr) {
+      // Check for empty array
+      if (arr.Length == 0) {
+         throw new ArgumentException(
+            "Array cannot be empty");
+      }
 
-public class Solution {
-    public int LengthOfLongestSubstring(string s) {
-        int n = s.Length;
-        int ans = 0;
-        Dictionary<char, int> map = new Dictionary<char, int>();
-        for (int j = 0, i = 0; j < n; j++) {
-            if (map.ContainsKey(s[j])) {
-                i = Math.Max(map[s[j]], i);
-            }
-            ans = Math.Max(ans, j - i + 1);
-            map[s[j]] = j + 1;
-        }
-        return ans;
-    }
+      int maxValue = arr[0];
+      foreach (int num in arr) {
+         if (num > maxValue) {
+            maxValue = num;
+         }
+      }
+      return maxValue;
+   }
+
+   public static void Main(string[] args) {
+      int[] numbers = {3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5};
+      Console.WriteLine("Maximum value: " + 
+         FindMaximum(numbers));  // Output: 9
+   }
 }

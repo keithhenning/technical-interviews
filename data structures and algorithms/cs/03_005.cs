@@ -1,18 +1,33 @@
 using System;
-using System.Collections.Generic;
+using System.Globalization;
 
-public class Solution {
-    public int LengthOfLongestSubstring(string s) {
-        int n = s.Length;
-        int ans = 0;
-        Dictionary<char, int> map = new Dictionary<char, int>();
-        for (int j = 0, i = 0; j < n; j++) {
-            if (map.ContainsKey(s[j])) {
-                i = Math.Max(map[s[j]], i);
-            }
-            ans = Math.Max(ans, j - i + 1);
-            map[s[j]] = j + 1;
-        }
-        return ans;
-    }
+public class ComplexityDemo
+{
+   public static void DemonstrateComplexity()
+   {
+      DemonstrateComplexity(new int[] { 10, 100, 1000 });
+   }
+
+   public static void DemonstrateComplexity(int[] sizes)
+   {
+      // Create a number formatter
+      NumberFormatInfo formatter = 
+         CultureInfo.InvariantCulture.NumberFormat;
+
+      foreach (int n in sizes)
+      {
+         // Calculate quadratic complexity operations
+         long operations = (long)n * n;
+
+         // Print the result
+         Console.WriteLine("Size " + n + ": " + 
+            operations.ToString("N0", formatter) + 
+            " operations");
+      }
+   }
+
+   public static void Main(string[] args)
+   {
+      DemonstrateComplexity();
+   }
 }

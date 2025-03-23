@@ -1,18 +1,21 @@
-using System;
-using System.Collections.Generic;
-
-public class Solution {
-    public int LengthOfLongestSubstring(string s) {
-        int n = s.Length;
-        int ans = 0;
-        Dictionary<char, int> map = new Dictionary<char, int>();
-        for (int j = 0, i = 0; j < n; j++) {
-            if (map.ContainsKey(s[j])) {
-                i = Math.Max(map[s[j]], i);
-            }
-            ans = Math.Max(ans, j - i + 1);
-            map[s[j]] = j + 1;
-        }
-        return ans;
-    }
+public void BubbleSort(int[] arr)
+{
+   int n = arr.Length;
+   
+   // Outer loop: n times
+   for (int i = 0; i < n; i++)
+   {
+      // Inner loop: n times (roughly)
+      // Together: n * n = n² operations
+      for (int j = 0; j < n - i - 1; j++)
+      {
+         if (arr[j] > arr[j + 1])
+         {
+            // Swap elements
+            int temp = arr[j];
+            arr[j] = arr[j + 1];
+            arr[j + 1] = temp;
+         }
+      }
+   }
 }

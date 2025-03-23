@@ -1,5 +1,6 @@
 // When to move pointers
-if (condition) {
+if (condition)
+{
    // Move left pointer right
    left += 1;
    // Move right pointer left
