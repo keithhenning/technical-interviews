@@ -10,10 +10,10 @@ class Customer
    public int ArrivalTime { get; }
 
    public Customer(
-      string id, 
-      int partySize, 
+      string id,
+      int partySize,
       int vipStars,
-      bool hasReservation, 
+      bool hasReservation,
       int arrivalTime)
    {
       Id = id;
@@ -26,7 +26,7 @@ class Customer
    public int GetPriority(int currentTime)
    {
       int waitingTime = currentTime - ArrivalTime;
-      return (VipStars * 10) + 
+      return (VipStars * 10) +
          (HasReservation ? 20 : 0) +
          waitingTime;
    }
@@ -50,7 +50,7 @@ public class RestaurantPrioritySeating
       List<int> tables,
       List<object[]> events)
    {
-      events.Sort((e1, e2) => 
+      events.Sort((e1, e2) =>
          ((int)e1[1]).CompareTo((int)e2[1]));
 
       var waitlist = new PriorityQueue<Customer>(
@@ -65,7 +65,7 @@ public class RestaurantPrioritySeating
          int currentTime = (int)eventObj[1];
 
          var updatedWaitlist = new PriorityQueue<Customer>(
-            Comparer<Customer>.Create((c1, c2) => 
+            Comparer<Customer>.Create((c1, c2) =>
                c2.GetPriority(currentTime)
                   .CompareTo(c1.GetPriority(currentTime))));
 
@@ -83,10 +83,10 @@ public class RestaurantPrioritySeating
             bool hasReservation = (bool)eventObj[5];
 
             Customer newCustomer = new Customer(
-               customerId, 
-               partySize, 
+               customerId,
+               partySize,
                vipStars,
-               hasReservation, 
+               hasReservation,
                currentTime);
             waitlist.Enqueue(newCustomer);
          }

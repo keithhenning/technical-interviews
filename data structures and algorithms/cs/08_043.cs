@@ -1,38 +1,48 @@
-public class Solution {
-    public static int MaxDiagonalSum(int[][] matrix) {
-        if (matrix == null || matrix.Length == 0 || matrix[0].Length == 0) {
-            return 0;
-        }
+using System;
 
-        int n = matrix.Length;
-        int maxSum = int.MinValue;
+public class Solution
+{
+   public static int MaxDiagonalSum(int[][] matrix)
+   {
+      if (matrix == null || matrix.Length == 0 ||
+          matrix[0].Length == 0)
+      {
+         return 0;
+      }
 
-        for (int col = 0; col < n; col++) {
-            int diagonalSum = 0;
-            int r = 0, c = col;
+      int n = matrix.Length;
+      int maxSum = int.MinValue;
 
-            while (r < n && c < n) {
-                diagonalSum += matrix[r][c];
-                r++;
-                c++;
-            }
+      for (int col = 0; col < n; col++)
+      {
+         int diagonalSum = 0;
+         int r = 0, c = col;
 
-            maxSum = Math.Max(maxSum, diagonalSum);
-        }
+         while (r < n && c < n)
+         {
+            diagonalSum += matrix[r][c];
+            r++;
+            c++;
+         }
 
-        for (int row = 1; row < n; row++) {
-            int diagonalSum = 0;
-            int r = row, c = 0;
+         maxSum = Math.Max(maxSum, diagonalSum);
+      }
 
-            while (r < n && c < n) {
-                diagonalSum += matrix[r][c];
-                r++;
-                c++;
-            }
+      for (int row = 1; row < n; row++)
+      {
+         int diagonalSum = 0;
+         int r = row, c = 0;
 
-            maxSum = Math.Max(maxSum, diagonalSum);
-        }
+         while (r < n && c < n)
+         {
+            diagonalSum += matrix[r][c];
+            r++;
+            c++;
+         }
 
-        return maxSum;
-    }
+         maxSum = Math.Max(maxSum, diagonalSum);
+      }
+
+      return maxSum;
+   }
 }

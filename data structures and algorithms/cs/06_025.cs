@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.Text;
+using System.Text.Json;
 
 public class AStar
 {
@@ -14,11 +16,18 @@ public class AStar
    /**
     * Get valid neighboring positions
     */
-   public static List<int[]> GetNeighbors(int[] pos, int[][] grid)
+   public static List<int[]> GetNeighbors(
+      int[] pos,
+      int[][] grid)
    {
       List<int[]> neighbors = new List<int[]>();
       // Right, down, left, up
-      int[][] directions = { new int[] { 0, 1 }, new int[] { 1, 0 }, new int[] { 0, -1 }, new int[] { -1, 0 } };
+      int[][] directions = {
+         new int[] { 0, 1 },
+         new int[] { 1, 0 },
+         new int[] { 0, -1 },
+         new int[] { -1, 0 }
+      };
 
       foreach (int[] dir in directions)
       {
@@ -37,78 +46,32 @@ public class AStar
    }
 
    /**
-    * A* pathfinding algorithm
-    * Returns path from start to goal if found
+    * Custom PriorityQueue implementation
     */
-   public static List<int[]> AStarPathfinding(int[][] grid, int[] start, int[] goal)
+   public class PriorityQueue<T> where T : IComparable<T>
    {
-      // Priority queue for open nodes
-      PriorityQueue<Node> openSet = new PriorityQueue<Node>();
-      openSet.Enqueue(new Node(start, 0, ManhattanDistance(start, goal)));
+      private List<T> data;
 
-      // Track previous node in optimal path
-      Dictionary<string, int[]> cameFrom = new Dictionary<string, int[]>();
-
-      // Cost from start to each node
-      Dictionary<string, int> gScore = new Dictionary<string, int>();
-      gScore[JsonConvert.SerializeObject(start)] = 0;
-
-      // Set of visited nodes
-      HashSet<string> closedSet = new HashSet<string>();
-
-      while (openSet.Count > 0)
+      public PriorityQueue()
       {
-         Node current = openSet.Dequeue();
-         int[] currentPos = current.Position;
-         string currentKey = JsonConvert.SerializeObject(currentPos);
-
-         // Check if reached goal
-         if (currentPos.SequenceEqual(goal))
-         {
-            // Reconstruct path
-            List<int[]> path = new List<int[]>();
-            path.Add(currentPos);
-            while (cameFrom.ContainsKey(currentKey))
-            {
-               currentPos = cameFrom[currentKey];
-               currentKey = JsonConvert.SerializeObject(currentPos);
-               path.Insert(0, currentPos);
-            }
-            return path;
-         }
-
-         closedSet.Add(currentKey);
-
-         // Check all neighbors
-         foreach (int[] neighbor in GetNeighbors(currentPos, grid))
-         {
-            string neighborKey = JsonConvert.SerializeObject(neighbor);
-
-            // Skip if already evaluated
-            if (closedSet.Contains(neighborKey))
-            {
-               continue;
-            }
-
-            // Assume cost of 1 to move to adjacent square
-            int tentativeGScore = gScore[currentKey] + 1;
-
-            // Found better path to neighbor
-            if (!gScore.ContainsKey(neighborKey) ||
-                  tentativeGScore < gScore[neighborKey])
-            {
-               cameFrom[neighborKey] = currentPos;
-               gScore[neighborKey] = tentativeGScore;
-               int fScore = tentativeGScore +
-                     ManhattanDistance(neighbor, goal);
-               openSet.Enqueue(new Node(neighbor,
-                     tentativeGScore, fScore));
-            }
-         }
+         data = new List<T>();
       }
 
-      // No path found
-      return new List<int[]>();
+      public void Enqueue(T item)
+      {
+         data.Add(item);
+         data.Sort();
+      }
+
+      public T Dequeue()
+      {
+         if (Count == 0) throw new InvalidOperationException();
+         T item = data[0];
+         data.RemoveAt(0);
+         return item;
+      }
+
+      public int Count => data.Count;
    }
 
    /**
@@ -134,9 +97,104 @@ public class AStar
    }
 
    /**
+    * A* pathfinding algorithm
+    * Returns path from start to goal if found
+    */
+   public static List<int[]> AStarPathfinding(
+      int[][] grid,
+      int[] start,
+      int[] goal)
+   {
+      // Priority queue for open nodes
+      var openSet = new PriorityQueue<Node>();
+      openSet.Enqueue(
+         new Node(
+            start,
+            0,
+            ManhattanDistance(start, goal)
+         )
+      );
+
+      // Track previous node in optimal path
+      var cameFrom = new Dictionary<string, int[]>();
+
+      // Cost from start to each node
+      var gScore = new Dictionary<string, int>();
+      gScore[JsonSerializer.Serialize(start)] = 0;
+
+      // Set of visited nodes
+      var closedSet = new HashSet<string>();
+
+      while (openSet.Count > 0)
+      {
+         Node current = openSet.Dequeue();
+         int[] currentPos = current.Position;
+         string currentKey =
+            JsonSerializer.Serialize(currentPos);
+
+         // Check if reached goal
+         if (currentPos.SequenceEqual(goal))
+         {
+            // Reconstruct path
+            var path = new List<int[]>();
+            path.Add(currentPos);
+            while (cameFrom.ContainsKey(currentKey))
+            {
+               currentPos = cameFrom[currentKey];
+               currentKey =
+                  JsonSerializer.Serialize(currentPos);
+               path.Insert(0, currentPos);
+            }
+            return path;
+         }
+
+         closedSet.Add(currentKey);
+
+         // Check all neighbors
+         foreach (var neighbor in
+                  GetNeighbors(currentPos, grid))
+         {
+            string neighborKey =
+               JsonSerializer.Serialize(neighbor);
+
+            // Skip if already evaluated
+            if (closedSet.Contains(neighborKey))
+            {
+               continue;
+            }
+
+            // Assume cost of 1 to move to adjacent square
+            int tentativeGScore = gScore[currentKey] + 1;
+
+            // Found better path to neighbor
+            if (!gScore.ContainsKey(neighborKey) ||
+                  tentativeGScore < gScore[neighborKey])
+            {
+               cameFrom[neighborKey] = currentPos;
+               gScore[neighborKey] = tentativeGScore;
+               int fScore = tentativeGScore +
+                  ManhattanDistance(neighbor, goal);
+               openSet.Enqueue(
+                  new Node(
+                     neighbor,
+                     tentativeGScore,
+                     fScore
+                  )
+               );
+            }
+         }
+      }
+      return null;
+   }
+
+   /**
     * Create visual representation of the path
     */
-   public static string VisualizePath(int[][] grid, List<int[]> path, int[] start, int[] goal)
+   public static string VisualizePath(
+      int[][] grid,
+      List<int[]> path,
+      int[] start,
+      int[] goal)
    {
       StringBuilder visual = new StringBuilder();
 
@@ -190,12 +248,12 @@ public class AStar
    {
       // 0 = empty space, 1 = wall
       int[][] grid = {
-            new int[] { 0, 0, 0, 0, 1 },
-            new int[] { 1, 1, 0, 1, 0 },
-            new int[] { 0, 0, 0, 0, 0 },
-            new int[] { 0, 1, 1, 1, 0 },
-            new int[] { 0, 0, 0, 1, 0 }
-        };
+         new int[] { 0, 0, 0, 0, 1 },
+         new int[] { 1, 1, 0, 1, 0 },
+         new int[] { 0, 0, 0, 0, 0 },
+         new int[] { 0, 1, 1, 1, 0 },
+         new int[] { 0, 0, 0, 1, 0 }
+      };
 
       int[] start = { 0, 0 };
       int[] goal = { 4, 4 };
@@ -207,11 +265,15 @@ public class AStar
       Console.Write("Path found: ");
       foreach (int[] pos in path)
       {
-         Console.Write($"[{pos[0]}, {pos[1]}] ");
+         Console.Write(
+            $"[{pos[0]}, {pos[1]}] "
+         );
       }
 
       // Print grid visualization
       Console.WriteLine("\n\nGrid visualization:");
-      Console.WriteLine(VisualizePath(grid, path, start, goal));
+      Console.WriteLine(
+         VisualizePath(grid, path, start, goal)
+      );
    }
 }

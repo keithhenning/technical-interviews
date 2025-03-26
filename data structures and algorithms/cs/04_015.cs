@@ -1,24 +1,24 @@
 public interface INewSystem
 {
-    void ProcessData();
+   void ProcessData();
 }
 
 public class OldSystem
 {
-    public void ProcessLegacyData() { /* old logic */ }
+   public void ProcessLegacyData() { /* old logic */ }
 }
 
 public class SystemAdapter : INewSystem
 {
-    private OldSystem oldSystem;
+   private OldSystem oldSystem;
 
-    public SystemAdapter(OldSystem oldSystem)
-    {
-        this.oldSystem = oldSystem;
-    }
+   public SystemAdapter(OldSystem oldSystem)
+   {
+      this.oldSystem = oldSystem;
+   }
 
-    public void ProcessData()
-    {
-        oldSystem.ProcessLegacyData();
-    }
+   public void ProcessData()
+   {
+      oldSystem.ProcessLegacyData();
+   }
 }

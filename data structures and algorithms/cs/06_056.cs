@@ -2,7 +2,8 @@
 windowSum += arr[windowEnd];
 
 // For character frequency
-windowChars[s[windowEnd]] = windowChars.GetValueOrDefault(s[windowEnd], 0) + 1;
+windowChars[s[windowEnd]] =
+   windowChars.GetValueOrDefault(s[windowEnd], 0) + 1;
 
 // Removing from window
 windowSum -= arr[windowStart];

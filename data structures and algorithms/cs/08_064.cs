@@ -1,22 +1,22 @@
 using System;
 using System.Collections.Generic;
 
-public class Solution 
+public class Solution
 {
-   public int EvalRPN(string[] tokens) 
+   public int EvalRPN(string[] tokens)
    {
       var stack = new Stack<int>();
 
-      foreach (var token in tokens) 
+      foreach (var token in tokens)
       {
-         if (token == "+" || token == "-" || 
-            token == "*" || token == "/" || 
-            token == "^") 
+         if (token == "+" || token == "-" ||
+            token == "*" || token == "/" ||
+            token == "^")
          {
             int b = stack.Pop();
             int a = stack.Pop();
 
-            switch (token) 
+            switch (token)
             {
                case "+":
                   stack.Push(a + b);
@@ -34,8 +34,8 @@ public class Solution
                   stack.Push((int)Math.Pow(a, b));
                   break;
             }
-         } 
-         else 
+         }
+         else
          {
             stack.Push(int.Parse(token));
          }

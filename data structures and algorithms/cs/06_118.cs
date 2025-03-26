@@ -1,203 +1,259 @@
 using System;
 using System.Collections.Generic;
 
-public class RedBlackTree {
-    private static readonly bool RED = true;
-    private static readonly bool BLACK = false;
+public class RedBlackTree
+{
+   private static readonly bool RED = true;
+   private static readonly bool BLACK = false;
 
-    private class Node {
-        public int Key;
-        public Node Left, Right, Parent;
-        public bool Color; // true for red, false for black
+   private class Node
+   {
+      public int Key;
+      public Node Left, Right, Parent;
+      public bool Color; // true for red, false for black
 
-        public Node(int key) {
-            this.Key = key;
-            this.Color = RED;
-            this.Left = NIL;
-            this.Right = NIL;
-        }
-    }
+      public Node(int key)
+      {
+         this.Key = key;
+         this.Color = RED;
+         this.Left = NIL;
+         this.Right = NIL;
+      }
+   }
 
-    private static readonly Node NIL = new Node(0) { Color = BLACK };
-    private Node root = NIL;
+   private static readonly Node NIL = new Node(0)
+   {
+      Color = BLACK
+   };
+   private Node root = NIL;
 
-    public void Insert(int key) {
-        Node node = new Node(key);
+   public void Insert(int key)
+   {
+      Node node = new Node(key);
 
-        Node y = NIL;
-        Node x = root;
+      Node y = NIL;
+      Node x = root;
 
-        // Find position for new node
-        while (x != NIL) {
-            y = x;
-            if (node.Key < x.Key) {
-                x = x.Left;
-            } else {
-                x = x.Right;
+      // Find position for new node
+      while (x != NIL)
+      {
+         y = x;
+         if (node.Key < x.Key)
+         {
+            x = x.Left;
+         }
+         else
+         {
+            x = x.Right;
+         }
+      }
+
+      // Set parent of node
+      node.Parent = y;
+
+      // If tree is empty, make node the root
+      if (y == NIL)
+      {
+         root = node;
+      }
+      else if (node.Key < y.Key)
+      {
+         y.Left = node;
+      }
+      else
+      {
+         y.Right = node;
+      }
+
+      // Fix the tree
+      FixInsert(node);
+   }
+
+   private void FixInsert(Node k)
+   {
+      Node uncle;
+
+      // While parent is red
+      while (k.Parent != NIL && k.Parent.Color == RED)
+      {
+         if (k.Parent == k.Parent.Parent.Right)
+         {
+            uncle = k.Parent.Parent.Left;
+
+            // Case 1: Uncle is red
+            if (uncle.Color == RED)
+            {
+               uncle.Color = BLACK;
+               k.Parent.Color = BLACK;
+               k.Parent.Parent.Color = RED;
+               k = k.Parent.Parent;
             }
-        }
+            else
+            {
+               // Case 2: Uncle is black and k is left child
+               if (k == k.Parent.Left)
+               {
+                  k = k.Parent;
+                  RightRotate(k);
+               }
 
-        // Set parent of node
-        node.Parent = y;
-
-        // If tree is empty, make node the root
-        if (y == NIL) {
-            root = node;
-        } else if (node.Key < y.Key) {
-            y.Left = node;
-        } else {
-            y.Right = node;
-        }
-
-        // Fix the tree
-        FixInsert(node);
-    }
-
-    private void FixInsert(Node k) {
-        Node uncle;
-
-        // While parent is red
-        while (k.Parent != NIL && k.Parent.Color == RED) {
-            if (k.Parent == k.Parent.Parent.Right) {
-                uncle = k.Parent.Parent.Left;
-
-                // Case 1: Uncle is red
-                if (uncle.Color == RED) {
-                    uncle.Color = BLACK;
-                    k.Parent.Color = BLACK;
-                    k.Parent.Parent.Color = RED;
-                    k = k.Parent.Parent;
-                } else {
-                    // Case 2: Uncle is black and k is left child
-                    if (k == k.Parent.Left) {
-                        k = k.Parent;
-                        RightRotate(k);
-                    }
-
-                    // Case 3: Uncle is black and k is right child
-                    k.Parent.Color = BLACK;
-                    k.Parent.Parent.Color = RED;
-                    LeftRotate(k.Parent.Parent);
-                }
-            } else {
-                uncle = k.Parent.Parent.Right;
-
-                // Case 1: Uncle is red
-                if (uncle.Color == RED) {
-                    uncle.Color = BLACK;
-                    k.Parent.Color = BLACK;
-                    k.Parent.Parent.Color = RED;
-                    k = k.Parent.Parent;
-                } else {
-                    // Case 2: Uncle is black and k is right child
-                    if (k == k.Parent.Right) {
-                        k = k.Parent;
-                        LeftRotate(k);
-                    }
-
-                    // Case 3: Uncle is black and k is left child
-                    k.Parent.Color = BLACK;
-                    k.Parent.Parent.Color = RED;
-                    RightRotate(k.Parent.Parent);
-                }
+               // Case 3: Uncle is black and k is right child
+               k.Parent.Color = BLACK;
+               k.Parent.Parent.Color = RED;
+               LeftRotate(k.Parent.Parent);
             }
+         }
+         else
+         {
+            uncle = k.Parent.Parent.Right;
 
-            if (k == root) {
-                break;
+            // Case 1: Uncle is red
+            if (uncle.Color == RED)
+            {
+               uncle.Color = BLACK;
+               k.Parent.Color = BLACK;
+               k.Parent.Parent.Color = RED;
+               k = k.Parent.Parent;
             }
-        }
-        root.Color = BLACK;
-    }
+            else
+            {
+               // Case 2: Uncle is black and k is right child
+               if (k == k.Parent.Right)
+               {
+                  k = k.Parent;
+                  LeftRotate(k);
+               }
 
-    private void LeftRotate(Node x) {
-        Node y = x.Right;
-        x.Right = y.Left;
+               // Case 3: Uncle is black and k is left child
+               k.Parent.Color = BLACK;
+               k.Parent.Parent.Color = RED;
+               RightRotate(k.Parent.Parent);
+            }
+         }
 
-        if (y.Left != NIL) {
-            y.Left.Parent = x;
-        }
+         if (k == root)
+         {
+            break;
+         }
+      }
+      root.Color = BLACK;
+   }
 
-        y.Parent = x.Parent;
+   private void LeftRotate(Node x)
+   {
+      Node y = x.Right;
+      x.Right = y.Left;
 
-        if (x.Parent == NIL) {
-            root = y;
-        } else if (x == x.Parent.Left) {
-            x.Parent.Left = y;
-        } else {
-            x.Parent.Right = y;
-        }
+      if (y.Left != NIL)
+      {
+         y.Left.Parent = x;
+      }
 
-        y.Left = x;
-        x.Parent = y;
-    }
+      y.Parent = x.Parent;
 
-    private void RightRotate(Node x) {
-        Node y = x.Left;
-        x.Left = y.Right;
+      if (x.Parent == NIL)
+      {
+         root = y;
+      }
+      else if (x == x.Parent.Left)
+      {
+         x.Parent.Left = y;
+      }
+      else
+      {
+         x.Parent.Right = y;
+      }
 
-        if (y.Right != NIL) {
-            y.Right.Parent = x;
-        }
+      y.Left = x;
+      x.Parent = y;
+   }
 
-        y.Parent = x.Parent;
+   private void RightRotate(Node x)
+   {
+      Node y = x.Left;
+      x.Left = y.Right;
 
-        if (x.Parent == NIL) {
-            root = y;
-        } else if (x == x.Parent.Right) {
-            x.Parent.Right = y;
-        } else {
-            x.Parent.Left = y;
-        }
+      if (y.Right != NIL)
+      {
+         y.Right.Parent = x;
+      }
 
-        y.Right = x;
-        x.Parent = y;
-    }
+      y.Parent = x.Parent;
 
-    public Node Search(int key) {
-        return SearchHelper(root, key);
-    }
+      if (x.Parent == NIL)
+      {
+         root = y;
+      }
+      else if (x == x.Parent.Right)
+      {
+         x.Parent.Right = y;
+      }
+      else
+      {
+         x.Parent.Left = y;
+      }
 
-    private Node SearchHelper(Node node, int key) {
-        if (node == NIL || key == node.Key) {
-            return node;
-        }
+      y.Right = x;
+      x.Parent = y;
+   }
 
-        if (key < node.Key) {
-            return SearchHelper(node.Left, key);
-        }
-        return SearchHelper(node.Right, key);
-    }
+   public Node Search(int key)
+   {
+      return SearchHelper(root, key);
+   }
 
-    public void InOrderTraversal() {
-        Console.WriteLine("In-order traversal of the Red-Black Tree:");
-        InOrderHelper(root);
-        Console.WriteLine();
-    }
+   private Node SearchHelper(Node node, int key)
+   {
+      if (node == NIL || key == node.Key)
+      {
+         return node;
+      }
 
-    private void InOrderHelper(Node node) {
-        if (node != NIL) {
-            InOrderHelper(node.Left);
-            Console.Write(node.Key + "(" + (node.Color ? "RED" : "BLACK") + ") ");
-            InOrderHelper(node.Right);
-        }
-    }
+      if (key < node.Key)
+      {
+         return SearchHelper(node.Left, key);
+      }
+      return SearchHelper(node.Right, key);
+   }
 
-    public static void Main(string[] args) {
-        RedBlackTree rbTree = new RedBlackTree();
-        int[] keys = {7, 3, 18, 10, 22, 8, 11, 26};
+   public void InOrderTraversal()
+   {
+      Console.WriteLine("In-order traversal of the Red-Black Tree:");
+      InOrderHelper(root);
+      Console.WriteLine();
+   }
 
-        foreach (int key in keys) {
-            rbTree.Insert(key);
-        }
+   private void InOrderHelper(Node node)
+   {
+      if (node != NIL)
+      {
+         InOrderHelper(node.Left);
+         Console.Write(node.Key + "(" + (node.Color ? "RED" : "BLACK") + ") ");
+         InOrderHelper(node.Right);
+      }
+   }
 
-        rbTree.InOrderTraversal();
+   public static void Main(string[] args)
+   {
+      RedBlackTree rbTree = new RedBlackTree();
+      int[] keys = { 7, 3, 18, 10, 22, 8, 11, 26 };
 
-        int keyToFind = 10;
-        Node foundNode = rbTree.Search(keyToFind);
-        if (foundNode != NIL) {
-            Console.WriteLine("Found key " + keyToFind + ", color: " + (foundNode.Color ? "RED" : "BLACK"));
-        } else {
-            Console.WriteLine("Key " + keyToFind + " not found");
-        }
-    }
+      foreach (int key in keys)
+      {
+         rbTree.Insert(key);
+      }
+
+      rbTree.InOrderTraversal();
+
+      int keyToFind = 10;
+      Node foundNode = rbTree.Search(keyToFind);
+      if (foundNode != NIL)
+      {
+         Console.WriteLine("Found key " + keyToFind + ", color: " + (foundNode.Color ? "RED" : "BLACK"));
+      }
+      else
+      {
+         Console.WriteLine("Key " + keyToFind + " not found");
+      }
+   }
 }

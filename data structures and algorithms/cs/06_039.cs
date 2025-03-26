@@ -10,7 +10,10 @@ public class Graph
       graph = new Dictionary<string, List<Edge>>();
    }
 
-   public void AddEdge(string fromNode, string toNode, int weight)
+   public void AddEdge(
+      string fromNode,
+      string toNode,
+      int weight)
    {
       if (!graph.ContainsKey(fromNode))
       {
@@ -24,7 +27,9 @@ public class Graph
       }
    }
 
-   public KeyValuePair<Dictionary<string, int>, Dictionary<string, List<string>>>
+   public KeyValuePair<
+      Dictionary<string, int>,
+      Dictionary<string, List<string>>>
    Dijkstra(string start)
    {
       var distances = new Dictionary<string, int>();
@@ -34,8 +39,12 @@ public class Graph
       }
       distances[start] = 0;
 
-      var pq = new PriorityQueue<KeyValuePair<int, string>, int>();
-      pq.Enqueue(new KeyValuePair<int, string>(0, start), 0);
+      var pq = new PriorityQueue<
+         KeyValuePair<int, string>,
+         int>();
+      pq.Enqueue(
+         new KeyValuePair<int, string>(0, start),
+         0);
 
       var paths = new Dictionary<string, List<string>>();
       var startPath = new List<string> { start };
@@ -61,16 +70,26 @@ public class Graph
             if (distance < distances[neighbor])
             {
                distances[neighbor] = distance;
-               var newPath = new List<string>(paths[currentNode])
-               { neighbor };
+               var newPath = new List<string>(
+                  paths[currentNode])
+               {
+                  neighbor
+               };
                paths[neighbor] = newPath;
-               pq.Enqueue(new KeyValuePair<int, string>(distance, neighbor),
-               distance);
+               pq.Enqueue(
+                  new KeyValuePair<int, string>(
+                     distance,
+                     neighbor),
+                  distance);
             }
          }
       }
 
-      return new KeyValuePair<Dictionary<string, int>, Dictionary<string, List<string>>>(distances, paths);
+      return new KeyValuePair<
+         Dictionary<string, int>,
+         Dictionary<string, List<string>>>(
+            distances,
+            paths);
    }
 
    private class Edge

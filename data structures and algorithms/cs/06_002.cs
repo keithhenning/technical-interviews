@@ -31,7 +31,9 @@ public class MergeSort
    /**
     * Merge two sorted arrays into a single sorted array
     */
-   private static void Merge(int[] arr, int[] left, int[] right)
+   private static void Merge(
+         int[] arr, int[] left, int[] right
+      )
    {
       int i = 0, j = 0, k = 0;
 

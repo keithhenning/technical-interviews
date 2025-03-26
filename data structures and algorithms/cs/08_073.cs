@@ -13,7 +13,7 @@ public class OptimalRaceDayStrategy
 
    public OptimalRaceDayStrategy(
       int[][] performanceRatings,
-      int[] raceCapacity, 
+      int[] raceCapacity,
       List<int[]> ineligibility)
    {
       this.performanceRatings = performanceRatings;
@@ -39,18 +39,18 @@ public class OptimalRaceDayStrategy
       int[] raceCounts = new int[nRaces];
 
       Backtrack(
-         0, 
-         currentAssignment, 
-         raceCounts, 
+         0,
+         currentAssignment,
+         raceCounts,
          0);
 
       return bestPoints > 0 ? bestAssignment : null;
    }
 
    private void Backtrack(
-      int horseIdx, 
+      int horseIdx,
       int[] assignments,
-      int[] raceCounts, 
+      int[] raceCounts,
       int totalPoints)
    {
       if (horseIdx == nHorses)
@@ -69,8 +69,8 @@ public class OptimalRaceDayStrategy
          {
             bestPoints = totalPoints;
             Array.Copy(
-               assignments, 
-               bestAssignment, 
+               assignments,
+               bestAssignment,
                nHorses);
          }
          return;
@@ -89,8 +89,8 @@ public class OptimalRaceDayStrategy
          raceCounts[race]++;
 
          Backtrack(
-            horseIdx + 1, 
-            assignments, 
+            horseIdx + 1,
+            assignments,
             raceCounts,
             totalPoints + performanceRatings[horseIdx][race]);
 

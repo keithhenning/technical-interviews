@@ -1,12 +1,12 @@
 public interface IPaymentStrategy
 {
-    void Pay(int amount);
+   void Pay(int amount);
 }
 
 public class CreditCardStrategy : IPaymentStrategy
 {
-    public void Pay(int amount)
-    {
-        // Process credit card payment
-    }
+   public void Pay(int amount)
+   {
+      // Process credit card payment
+   }
 }

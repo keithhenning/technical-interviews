@@ -1,19 +1,24 @@
 using System.Collections.Generic;
 
-public class TreeNode {
+public class TreeNode
+{
    public int Val { get; set; }
    public TreeNode Left { get; set; }
    public TreeNode Right { get; set; }
    public TreeNode Connection { get; set; }
 
-   public TreeNode(int val) {
+   public TreeNode(int val)
+   {
       Val = val;
    }
 }
 
-public class Solution {
-   public TreeNode CloneTree(TreeNode root) {
-      if (root == null) {
+public class Solution
+{
+   public TreeNode CloneTree(TreeNode root)
+   {
+      if (root == null)
+      {
          return null;
       }
 
@@ -24,14 +29,17 @@ public class Solution {
    }
 
    private TreeNode CloneStructure(
-      TreeNode node, 
+      TreeNode node,
       Dictionary<TreeNode, TreeNode> nodeMap
-   ) {
-      if (node == null) {
+   )
+   {
+      if (node == null)
+      {
          return null;
       }
 
-      if (nodeMap.ContainsKey(node)) {
+      if (nodeMap.ContainsKey(node))
+      {
          return nodeMap[node];
       }
 
@@ -45,13 +53,16 @@ public class Solution {
    private void SetConnections(
       TreeNode originalNode,
       Dictionary<TreeNode, TreeNode> nodeMap
-   ) {
-      if (originalNode == null) {
+   )
+   {
+      if (originalNode == null)
+      {
          return;
       }
 
-      if (originalNode.Connection != null) {
-         nodeMap[originalNode].Connection = 
+      if (originalNode.Connection != null)
+      {
+         nodeMap[originalNode].Connection =
             nodeMap[originalNode.Connection];
       }
 

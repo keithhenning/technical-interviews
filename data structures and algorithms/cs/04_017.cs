@@ -2,23 +2,23 @@ using System.Collections.Generic;
 
 public interface IObserver
 {
-    void Update(string message);
+   void Update(string message);
 }
 
 public class NewsAgency
 {
-    private List<IObserver> observers = new List<IObserver>();
+   private List<IObserver> observers = new List<IObserver>();
 
-    public void AddObserver(IObserver observer)
-    {
-        observers.Add(observer);
-    }
+   public void AddObserver(IObserver observer)
+   {
+      observers.Add(observer);
+   }
 
-    public void NotifyObservers(string news)
-    {
-        foreach (IObserver observer in observers)
-        {
-            observer.Update(news);
-        }
-    }
+   public void NotifyObservers(string news)
+   {
+      foreach (IObserver observer in observers)
+      {
+         observer.Update(news);
+      }
+   }
 }

@@ -2,34 +2,36 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-public class FuzzyWordFinder 
+public class FuzzyWordFinder
 {
    private readonly TrieNode root;
 
-   private class TrieNode 
+   private class TrieNode
    {
-      public Dictionary<char, TrieNode> Children { get; set; }
+      public Dictionary<char, TrieNode>
+         Children
+      { get; set; }
       public bool IsEndOfWord { get; set; }
 
-      public TrieNode() 
+      public TrieNode()
       {
          Children = new Dictionary<char, TrieNode>();
          IsEndOfWord = false;
       }
    }
 
-   public FuzzyWordFinder(List<string> dictionary) 
+   public FuzzyWordFinder(List<string> dictionary)
    {
       root = new TrieNode();
       dictionary.ForEach(Insert);
    }
 
-   private void Insert(string word) 
+   private void Insert(string word)
    {
       var node = root;
-      foreach (var c in word) 
+      foreach (var c in word)
       {
-         if (!node.Children.ContainsKey(c)) 
+         if (!node.Children.ContainsKey(c))
          {
             node.Children[c] = new TrieNode();
          }
@@ -38,35 +40,35 @@ public class FuzzyWordFinder
       node.IsEndOfWord = true;
    }
 
-   public List<string> Search(string query, int k) 
+   public List<string> Search(string query, int k)
    {
       var matches = new List<Result>();
-      Dfs(root, query, 0, new StringBuilder(), 
+      Dfs(root, query, 0, new StringBuilder(),
          0, matches, k);
 
-      matches.Sort((a, b) => 
-         a.Substitutions != b.Substitutions ? 
-         a.Substitutions.CompareTo(b.Substitutions) : 
+      matches.Sort((a, b) =>
+         a.Substitutions != b.Substitutions ?
+         a.Substitutions.CompareTo(b.Substitutions) :
          a.Word.CompareTo(b.Word));
 
       return matches.Select(r => r.Word).ToList();
    }
 
    private void Dfs(
-      TrieNode node, 
-      string query, 
+      TrieNode node,
+      string query,
       int index,
-      StringBuilder currentWord, 
+      StringBuilder currentWord,
       int substitutions,
-      List<Result> results, 
-      int k) 
+      List<Result> results,
+      int k)
    {
-      if (index == query.Length) 
+      if (index == query.Length)
       {
-         if (node.IsEndOfWord) 
+         if (node.IsEndOfWord)
          {
             results.Add(
-               new Result(currentWord.ToString(), 
+               new Result(currentWord.ToString(),
                substitutions));
          }
          return;
@@ -74,19 +76,19 @@ public class FuzzyWordFinder
 
       var currentChar = query[index];
 
-      foreach (var entry in node.Children) 
+      foreach (var entry in node.Children)
       {
          var nextChar = entry.Key;
          var nextNode = entry.Value;
 
-         if (nextChar == currentChar) 
+         if (nextChar == currentChar)
          {
             currentWord.Append(nextChar);
             Dfs(nextNode, query, index + 1,
                currentWord, substitutions, results, k);
             currentWord.Length--;
-         } 
-         else if (substitutions < k) 
+         }
+         else if (substitutions < k)
          {
             currentWord.Append(nextChar);
             Dfs(nextNode, query, index + 1,
@@ -96,12 +98,12 @@ public class FuzzyWordFinder
       }
    }
 
-   private class Result 
+   private class Result
    {
       public string Word { get; set; }
       public int Substitutions { get; set; }
 
-      public Result(string word, int substitutions) 
+      public Result(string word, int substitutions)
       {
          Word = word;
          Substitutions = substitutions;

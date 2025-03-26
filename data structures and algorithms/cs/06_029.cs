@@ -9,14 +9,19 @@ public static List<int[]> AstarWithMaxIterations(
    int iterations = 0;
 
    // Initialize priority queue for open nodes
-   PriorityQueue<Node> openSet = new PriorityQueue<Node>();
-   openSet.Enqueue(new Node(start, 0, ManhattanDistance(start, goal)));
+   PriorityQueue<Node> openSet =
+      new PriorityQueue<Node>();
+   openSet.Enqueue(new Node(start, 0,
+      ManhattanDistance(start, goal)));
 
    // Set up other data structures
-   Dictionary<string, int[]> cameFrom = new Dictionary<string, int[]>();
-   Dictionary<string, int> gScore = new Dictionary<string, int>();
+   Dictionary<string, int[]> cameFrom =
+      new Dictionary<string, int[]>();
+   Dictionary<string, int> gScore =
+      new Dictionary<string, int>();
    gScore[JsonConvert.SerializeObject(start)] = 0;
-   HashSet<string> closedSet = new HashSet<string>();
+   HashSet<string> closedSet =
+      new HashSet<string>();
 
    // Process nodes while available and within limit
    while (openSet.Count > 0 && iterations < maxIter)

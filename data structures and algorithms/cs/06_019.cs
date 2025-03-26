@@ -24,9 +24,11 @@ List<int> recursiveResult = dfsTree.dfsRecursive(root);
 List<int> iterativeResult = dfsTree.dfsIterative(root);
 
 // Should print: [1, 2, 3, 4, 5, 6, 7]
-Console.WriteLine("Recursive DFS: " + string.Join(", ", recursiveResult));
+Console.WriteLine("Recursive DFS: " + string.Join(", ",
+  recursiveResult));
 // Should print: [1, 2, 3, 4, 5, 6, 7]
-Console.WriteLine("Iterative DFS: " + string.Join(", ", iterativeResult));
+Console.WriteLine("Iterative DFS: " + string.Join(", ",
+  iterativeResult));
 
 // Let's also test some edge cases I've learned are important:
 Console.WriteLine("\nTesting edge cases:");
@@ -34,22 +36,28 @@ Console.WriteLine("\nTesting edge cases:");
 // Empty tree
 TreeNode emptyRoot = null;
 // Should print: []
-Console.WriteLine("Empty tree (recursive): " + string.Join(", ", dfsTree.dfsRecursive(emptyRoot)));
+Console.WriteLine("Empty tree (recursive): " + string.Join(", ",
+  dfsTree.dfsRecursive(emptyRoot)));
 // Should print: []
-Console.WriteLine("Empty tree (iterative): " + string.Join(", ", dfsTree.dfsIterative(emptyRoot)));
+Console.WriteLine("Empty tree (iterative): " + string.Join(", ",
+  dfsTree.dfsIterative(emptyRoot)));
 
 // Single node tree
 TreeNode singleNode = new TreeNode(42);
 // Should print: [42]
-Console.WriteLine("Single node (recursive): " + string.Join(", ", dfsTree.dfsRecursive(singleNode)));
+Console.WriteLine("Single node (recursive): " + string.Join(", ",
+  dfsTree.dfsRecursive(singleNode)));
 // Should print: [42]
-Console.WriteLine("Single node (iterative): " + string.Join(", ", dfsTree.dfsIterative(singleNode)));
+Console.WriteLine("Single node (iterative): " + string.Join(", ",
+  dfsTree.dfsIterative(singleNode)));
 
 // Linear tree (only left children)
 TreeNode linearRoot = new TreeNode(1);
 linearRoot.left = new TreeNode(2);
 linearRoot.left.left = new TreeNode(3);
 // Should print: [1, 2, 3]
-Console.WriteLine("Linear tree (recursive): " + string.Join(", ", dfsTree.dfsRecursive(linearRoot)));
+Console.WriteLine("Linear tree (recursive): " + string.Join(", ",
+  dfsTree.dfsRecursive(linearRoot)));
 // Should print: [1, 2, 3]
-Console.WriteLine("Linear tree (iterative): " + string.Join(", ", dfsTree.dfsIterative(linearRoot)));
+Console.WriteLine("Linear tree (iterative): " + string.Join(", ",
+  dfsTree.dfsIterative(linearRoot)));

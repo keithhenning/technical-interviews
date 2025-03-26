@@ -11,7 +11,7 @@ public class ComplexityDemo
    public static void DemonstrateComplexity(int[] sizes)
    {
       // Create a number formatter
-      NumberFormatInfo formatter = 
+      NumberFormatInfo formatter =
          CultureInfo.InvariantCulture.NumberFormat;
 
       foreach (int n in sizes)
@@ -20,8 +20,8 @@ public class ComplexityDemo
          long operations = (long)n * n;
 
          // Print the result
-         Console.WriteLine("Size " + n + ": " + 
-            operations.ToString("N0", formatter) + 
+         Console.WriteLine("Size " + n + ": " +
+            operations.ToString("N0", formatter) +
             " operations");
       }
    }

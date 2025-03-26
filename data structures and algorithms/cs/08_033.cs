@@ -1,21 +1,29 @@
-public class ViewingAreaCalculator {
-    public static int MaxViewingArea(int[] heights) {
-        int left = 0;
-        int right = heights.Length - 1;
-        int maxArea = 0;
+using System;
 
-        while (left < right) {
-            int width = right - left;
-            int height = Math.Min(heights[left], heights[right]);
-            maxArea = Math.Max(maxArea, width * height);
+public class ViewingAreaCalculator
+{
+   public static int MaxViewingArea(int[] heights)
+   {
+      int left = 0;
+      int right = heights.Length - 1;
+      int maxArea = 0;
 
-            if (heights[left] < heights[right]) {
-                left++;
-            } else {
-                right--;
-            }
-        }
+      while (left < right)
+      {
+         int width = right - left;
+         int height = Math.Min(heights[left], heights[right]);
+         maxArea = Math.Max(maxArea, width * height);
 
-        return maxArea;
-    }
+         if (heights[left] < heights[right])
+         {
+            left++;
+         }
+         else
+         {
+            right--;
+         }
+      }
+
+      return maxArea;
+   }
 }

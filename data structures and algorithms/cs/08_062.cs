@@ -1,9 +1,11 @@
-public class Solution 
+using System;
+
+public class Solution
 {
-   public int NumIslands(char[][] grid) 
+   public int NumIslands(char[][] grid)
    {
-      if (grid == null || grid.Length == 0 || 
-         grid[0].Length == 0) 
+      if (grid == null || grid.Length == 0 ||
+         grid[0].Length == 0)
       {
          return 0;
       }
@@ -12,11 +14,11 @@ public class Solution
       int cols = grid[0].Length;
       int count = 0;
 
-      for (int i = 0; i < rows; i++) 
+      for (int i = 0; i < rows; i++)
       {
-         for (int j = 0; j < cols; j++) 
+         for (int j = 0; j < cols; j++)
          {
-            if (grid[i][j] == '1') 
+            if (grid[i][j] == '1')
             {
                count++;
                Dfs(grid, i, j, rows, cols);
@@ -28,15 +30,15 @@ public class Solution
    }
 
    private void Dfs(
-      char[][] grid, 
-      int i, 
-      int j, 
-      int rows, 
-      int cols) 
+      char[][] grid,
+      int i,
+      int j,
+      int rows,
+      int cols)
    {
-      if (i < 0 || i >= rows || 
-         j < 0 || j >= cols || 
-         grid[i][j] == '0') 
+      if (i < 0 || i >= rows ||
+         j < 0 || j >= cols ||
+         grid[i][j] == '0')
       {
          return;
       }

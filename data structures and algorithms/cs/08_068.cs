@@ -1,4 +1,6 @@
-class PlayerNode 
+using System;
+
+class PlayerNode
 {
    public string Name { get; }
    public double BattingAverage { get; }
@@ -6,7 +8,7 @@ class PlayerNode
 
    public PlayerNode(
       string name,
-      double battingAverage) 
+      double battingAverage)
    {
       Name = name;
       BattingAverage = battingAverage;
@@ -14,20 +16,20 @@ class PlayerNode
    }
 }
 
-public class Solution 
+public class Solution
 {
    public string RotateLineupAndFindBest(
-      PlayerNode head, 
-      int k, 
-      int m) 
+      PlayerNode head,
+      int k,
+      int m)
    {
-      if (head == null || head.Next == head || k == 0) 
+      if (head == null || head.Next == head || k == 0)
       {
          return FindBestBatter(head, m);
       }
 
       PlayerNode current = head;
-      for (int i = 0; i < k - 1; i++) 
+      for (int i = 0; i < k - 1; i++)
       {
          current = current.Next;
       }
@@ -35,7 +37,7 @@ public class Solution
       PlayerNode newHead = current.Next;
 
       PlayerNode last = newHead;
-      while (last.Next != head) 
+      while (last.Next != head)
       {
          last = last.Next;
       }
@@ -48,9 +50,9 @@ public class Solution
 
    private string FindBestBatter(
       PlayerNode head,
-      int m) 
+      int m)
    {
-      if (head == null) 
+      if (head == null)
       {
          return null;
       }
@@ -58,16 +60,16 @@ public class Solution
       PlayerNode bestPlayer = head;
       PlayerNode current = head;
 
-      for (int i = 0; i < m - 1; i++) 
+      for (int i = 0; i < m - 1; i++)
       {
          current = current.Next;
          if (current.BattingAverage >
-            bestPlayer.BattingAverage) 
+            bestPlayer.BattingAverage)
          {
             bestPlayer = current;
          }
 
-         if (current == head) 
+         if (current == head)
          {
             break;
          }

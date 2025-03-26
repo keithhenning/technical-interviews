@@ -32,7 +32,8 @@ public class BinaryTree
    /**
     * Helper for inorder traversal
     */
-   private void InorderHelper(TreeNode node, List<int> result)
+   private void InorderHelper(TreeNode node,
+                              List<int> result)
    {
       if (node != null)
       {
@@ -55,7 +56,8 @@ public class BinaryTree
    /**
     * Helper for preorder traversal
     */
-   private void PreorderHelper(TreeNode node, List<int> result)
+   private void PreorderHelper(TreeNode node,
+                               List<int> result)
    {
       if (node != null)
       {
@@ -78,7 +80,8 @@ public class BinaryTree
    /**
     * Helper for postorder traversal
     */
-   private void PostorderHelper(TreeNode node, List<int> result)
+   private void PostorderHelper(TreeNode node,
+                                List<int> result)
    {
       if (node != null)
       {

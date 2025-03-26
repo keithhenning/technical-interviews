@@ -67,7 +67,7 @@ public class FashionStack
          return null;
       }
 
-      int itemsToMove = 
+      int itemsToMove =
          mainStack.Count - mostPopularIndex - 1;
       for (int i = 0; i < itemsToMove; i++)
       {

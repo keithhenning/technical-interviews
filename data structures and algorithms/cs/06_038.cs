@@ -10,12 +10,16 @@ public class Graph
       graph = new Dictionary<string, List<Edge>>();
    }
 
-   public void AddEdge(string fromNode, string toNode, int weight)
+   public void AddEdge(
+     string fromNode,
+     string toNode,
+     int weight
+   )
    {
       if (weight < 0)
       {
          throw new ArgumentException(
-            "Negative weights not allowed in Dijkstra's"
+           "Negative weights not allowed in Dijkstra's"
          );
       }
 
@@ -31,13 +35,15 @@ public class Graph
       }
    }
 
-   public KeyValuePair<Dictionary<string, int>, Dictionary<string, List<string>>>
-      Dijkstra(string start)
+   public KeyValuePair<
+     Dictionary<string, int>,
+     Dictionary<string, List<string>>
+   > Dijkstra(string start)
    {
       if (!graph.ContainsKey(start))
       {
          throw new ArgumentException(
-            $"Start node '{start}' not in graph"
+           $"Start node '{start}' not in graph"
          );
       }
 
@@ -48,8 +54,14 @@ public class Graph
       }
       distances[start] = 0;
 
-      var pq = new PriorityQueue<KeyValuePair<int, string>, int>();
-      pq.Enqueue(new KeyValuePair<int, string>(0, start), 0);
+      var pq = new PriorityQueue<
+        KeyValuePair<int, string>,
+        int
+      >();
+      pq.Enqueue(
+        new KeyValuePair<int, string>(0, start),
+        0
+      );
 
       var paths = new Dictionary<string, List<string>>();
       var startPath = new List<string> { start };
@@ -59,9 +71,9 @@ public class Graph
       {
          var current = pq.Dequeue();
          var currentNode = current.Value;
-         var currentDistance = current.Key;
+         var currentDist = current.Key;
 
-         if (currentDistance > distances[currentNode])
+         if (currentDist > distances[currentNode])
          {
             continue;
          }
@@ -70,28 +82,30 @@ public class Graph
          {
             var neighbor = edge.Destination;
             var weight = edge.Weight;
-            var distance = currentDistance + weight;
+            var distance = currentDist + weight;
 
             if (distance < distances[neighbor])
             {
                distances[neighbor] = distance;
-               var newPath = new List<string>(paths[currentNode])
-               {
-                  neighbor
-               };
+               var newPath = new List<string>(
+                 paths[currentNode]
+               ) { neighbor };
                paths[neighbor] = newPath;
                pq.Enqueue(
-                  new KeyValuePair<int, string>(distance, neighbor),
-                  distance
+                 new KeyValuePair<int, string>(
+                   distance,
+                   neighbor
+                 ),
+                 distance
                );
             }
          }
       }
 
-      return new KeyValuePair<Dictionary<string, int>, Dictionary<string, List<string>>>(
-         distances,
-         paths
-      );
+      return new KeyValuePair<
+        Dictionary<string, int>,
+        Dictionary<string, List<string>>
+      >(distances, paths);
    }
 
    private class Edge
@@ -120,14 +134,17 @@ public class Graph
 
       var startNode = "Dallas";
       var result = g.Dijkstra(startNode);
-
       var distances = result.Key;
       var paths = result.Value;
 
-      Console.WriteLine($"Shortest distances from {startNode}:");
+      Console.WriteLine(
+        $"Shortest distances from {startNode}:"
+      );
       foreach (var entry in distances)
       {
-         Console.WriteLine($"  To {entry.Key}: {entry.Value} miles");
+         Console.WriteLine(
+           $"  To {entry.Key}: {entry.Value} miles"
+         );
       }
 
       Console.WriteLine("\nShortest paths:");
@@ -138,8 +155,10 @@ public class Graph
 
          if (node != startNode)
          {
+            var pathStr = string.Join(" -> ", path);
             Console.WriteLine(
-               $"  To {node}: {string.Join(" -> ", path)} (distance: {distances[node]} miles)"
+              $"  To {node}: {pathStr} " +
+              $"(distance: {distances[node]} miles)"
             );
          }
       }

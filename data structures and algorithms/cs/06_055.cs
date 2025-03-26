@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-// Common pattern I use for state tracking
+// Common patterns I use for state tracking
 
 // For sum-based problems
 int windowSum = 0;

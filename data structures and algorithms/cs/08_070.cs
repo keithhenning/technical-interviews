@@ -1,8 +1,10 @@
+using System;
+
 public class Solution
 {
    public int MaxHolidayJoy(
       int[] joyRatings,
-      int minCards, 
+      int minCards,
       int maxCards)
    {
       int n = joyRatings.Length;

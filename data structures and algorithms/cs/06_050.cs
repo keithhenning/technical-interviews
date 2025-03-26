@@ -9,7 +9,12 @@ public static int MaxArea(int[] height)
       // Calculate width between pointers
       int width = right - left;
       // Calculate area using the smaller height
-      maxArea = Math.Max(maxArea, width * Math.Min(height[left], height[right]));
+      maxArea = Math.Max(maxArea,
+                  width * Math.Min(
+                     height[left],
+                     height[right]
+                     )
+                  );
 
       // Move the pointer with smaller height
       if (height[left] < height[right])

@@ -2,25 +2,25 @@ using System;
 
 public class MainClass
 {
-    public static void Main(string[] args)
-    {
-        // Main method code goes here
-    }
+   public static void Main(string[] args)
+   {
+      // Main method code goes here
+   }
 
-    public int NumTrees(int n)
-    {
-        int[] dp = new int[n + 1];
-        dp[0] = 1;
-        dp[1] = 1;
+   public int NumTrees(int n)
+   {
+      int[] dp = new int[n + 1];
+      dp[0] = 1;
+      dp[1] = 1;
 
-        for (int i = 2; i <= n; i++)
-        {
-            for (int j = 1; j <= i; j++)
-            {
-                dp[i] += dp[j - 1] * dp[i - j];
-            }
-        }
+      for (int i = 2; i <= n; i++)
+      {
+         for (int j = 1; j <= i; j++)
+         {
+            dp[i] += dp[j - 1] * dp[i - j];
+         }
+      }
 
-        return dp[n];
-    }
+      return dp[n];
+   }
 }

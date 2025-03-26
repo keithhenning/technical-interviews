@@ -38,7 +38,7 @@ public class FileSystemNode
 
    public string Name => name;
    public bool IsDirectory => isDirectory;
-   public IReadOnlyList<FileSystemNode> Children => 
+   public IReadOnlyList<FileSystemNode> Children =>
       isDirectory ? children.AsReadOnly() : null;
 
    public int GetSize()

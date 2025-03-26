@@ -1,21 +1,30 @@
-public class PropertyProfitCalculator {
-    public static int MaxPropertyProfit(int[] prices) {
-        if (prices == null || prices.Length < 2) {
-            return 0;
-        }
+using System;
 
-        int minPrice = int.MaxValue;
-        int maxProfit = 0;
+public class PropertyProfitCalculator
+{
+   public static int MaxPropertyProfit(int[] prices)
+   {
+      if (prices == null || prices.Length < 2)
+      {
+         return 0;
+      }
 
-        foreach (int price in prices) {
-            if (price < minPrice) {
-                minPrice = price;
-            } else {
-                int currentProfit = price - minPrice;
-                maxProfit = Math.Max(maxProfit, currentProfit);
-            }
-        }
+      int minPrice = int.MaxValue;
+      int maxProfit = 0;
 
-        return maxProfit;
-    }
+      foreach (int price in prices)
+      {
+         if (price < minPrice)
+         {
+            minPrice = price;
+         }
+         else
+         {
+            int currentProfit = price - minPrice;
+            maxProfit = Math.Max(maxProfit, currentProfit);
+         }
+      }
+
+      return maxProfit;
+   }
 }

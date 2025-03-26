@@ -1,5 +1,6 @@
 /**
- * Sorts an array using the most appropriate algorithm based on array size.
+ * Sorts an array using the most 
+ * appropriate algorithm based on array size.
  */
 public int[] SmartSort(int[] arr)
 {

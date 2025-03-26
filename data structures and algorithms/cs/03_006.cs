@@ -1,7 +1,7 @@
 public void BubbleSort(int[] arr)
 {
    int n = arr.Length;
-   
+
    // Outer loop: n times
    for (int i = 0; i < n; i++)
    {

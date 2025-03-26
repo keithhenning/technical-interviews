@@ -1,24 +1,24 @@
 public interface ICoffee
 {
-    double GetCost();
+   double GetCost();
 }
 
 public class SimpleCoffee : ICoffee
 {
-    public double GetCost() { return 1.0; }
+   public double GetCost() { return 1.0; }
 }
 
 public class MilkDecorator : ICoffee
 {
-    private ICoffee coffee;
+   private ICoffee coffee;
 
-    public MilkDecorator(ICoffee coffee)
-    {
-        this.coffee = coffee;
-    }
+   public MilkDecorator(ICoffee coffee)
+   {
+      this.coffee = coffee;
+   }
 
-    public double GetCost()
-    {
-        return coffee.GetCost() + 0.5;
-    }
+   public double GetCost()
+   {
+      return coffee.GetCost() + 0.5;
+   }
 }

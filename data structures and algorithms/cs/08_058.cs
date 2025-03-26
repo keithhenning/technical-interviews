@@ -1,35 +1,40 @@
-public class Solution 
+using System;
+
+public class Solution
 {
    public int KthAncestralElement(
-      int[][] arrays, 
-      int k) 
+      int[][] arrays,
+      int k)
    {
       int left = int.MaxValue;
       int right = int.MinValue;
 
-      foreach (var array in arrays) 
+      foreach (var array in arrays)
       {
-         if (array.Length > 0) 
+         if (array.Length > 0)
          {
             left = Math.Min(left, array[0]);
-            right = Math.Max(right, array[array.Length - 1]);
+            right = Math.Max(
+               right,
+               array[array.Length - 1]
+            );
          }
       }
 
-      while (left < right) 
+      while (left < right)
       {
          int mid = left + (right - left) / 2;
          int count = 0;
-         foreach (var array in arrays) 
+         foreach (var array in arrays)
          {
             count += BinarySearch(array, mid);
          }
 
-         if (count < k) 
+         if (count < k)
          {
             left = mid + 1;
-         } 
-         else 
+         }
+         else
          {
             right = mid;
          }
@@ -38,18 +43,18 @@ public class Solution
       return left;
    }
 
-   private int BinarySearch(int[] array, int target) 
+   private int BinarySearch(int[] array, int target)
    {
       int left = 0, right = array.Length;
 
-      while (left < right) 
+      while (left < right)
       {
          int mid = left + (right - left) / 2;
-         if (array[mid] <= target) 
+         if (array[mid] <= target)
          {
             left = mid + 1;
-         } 
-         else 
+         }
+         else
          {
             right = mid;
          }

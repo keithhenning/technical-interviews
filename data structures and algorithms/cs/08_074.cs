@@ -24,7 +24,7 @@ class DetectiveCaseAssignment
       public List<int> DetectiveIds { get; }
 
       public Assignment(
-         double time, 
+         double time,
          int caseId,
          List<int> detectiveIds)
       {
@@ -60,7 +60,7 @@ class DetectiveCaseAssignment
                   detectiveExpertise[c.Type];
                possibleAssignments.Add(
                   new Assignment(
-                     time, 
+                     time,
                      c.Id,
                      new List<int> { detective }));
             }
@@ -86,7 +86,7 @@ class DetectiveCaseAssignment
                   combinedExpertise + overhead;
                possibleAssignments.Add(
                   new Assignment(
-                     time, 
+                     time,
                      c.Id,
                      new List<int> { det1, det2 }));
             }
@@ -104,7 +104,8 @@ class DetectiveCaseAssignment
       {
          bool madeAssignment = false;
 
-         foreach (Assignment assignment in possibleAssignments)
+         foreach (Assignment assignment
+            in possibleAssignments)
          {
             if (assignedCases.Contains(assignment.CaseId))
             {
@@ -112,7 +113,8 @@ class DetectiveCaseAssignment
             }
 
             bool detectivesAvailable = true;
-            foreach (int detective in assignment.DetectiveIds)
+            foreach (int detective
+               in assignment.DetectiveIds)
             {
                if (busyDetectives.Contains(detective))
                {
@@ -129,7 +131,7 @@ class DetectiveCaseAssignment
 
                if (parallelTime < assignment.Time)
                {
-                  sequentialTime += 
+                  sequentialTime +=
                      assignment.Time - parallelTime;
                   parallelTime = assignment.Time;
                }

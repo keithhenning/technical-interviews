@@ -5,7 +5,8 @@ public class QuickSort
    /**
     * Sort array using quick sort algorithm
     */
-   public static void QuickSortArray(int[] arr, int low, int high)
+   public static void QuickSortArray(int[] arr, int low,
+                                     int high)
    {
       if (low < high)
       {
@@ -21,7 +22,8 @@ public class QuickSort
    /**
     * Partition array around pivot element
     */
-   private static int Partition(int[] arr, int low, int high)
+   private static int Partition(int[] arr, int low,
+                                int high)
    {
       // Select rightmost element as pivot
       int pivot = arr[high];

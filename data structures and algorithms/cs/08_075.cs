@@ -1,8 +1,10 @@
+using System;
+
 public class OrangeGroveHarvest
 {
    public static double MaxHarvest(
       int[][] grove,
-      double[] seasonalYield, 
+      double[] seasonalYield,
       int T)
    {
       int n = grove.Length;
@@ -38,7 +40,7 @@ public class OrangeGroveHarvest
                {
                   dp[i, j, d] = Math.Max(
                      dp[i, j, d],
-                     dp[i - 1, j, d - 1] + 
+                     dp[i - 1, j, d - 1] +
                         grove[i][j] * seasonalYield[d - 1]);
                }
 
@@ -46,7 +48,7 @@ public class OrangeGroveHarvest
                {
                   dp[i, j, d] = Math.Max(
                      dp[i, j, d],
-                     dp[i, j - 1, d - 1] + 
+                     dp[i, j - 1, d - 1] +
                         grove[i][j] * seasonalYield[d - 1]);
                }
             }
@@ -57,7 +59,7 @@ public class OrangeGroveHarvest
       for (int d = 1; d <= T; d++)
       {
          maxHarvest = Math.Max(
-            maxHarvest, 
+            maxHarvest,
             dp[n - 1, m - 1, d]);
       }
 
