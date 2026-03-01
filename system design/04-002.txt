@@ -1,0 +1,8 @@
+// Each post ~= 1 KB text content + metadata
+50M posts/day × 1 KB  =  50 GB/day
+// Annualize it
+50 GB/day × 365  =  ~18 TB/year
+// With replication factor of 3 (standard for durability)
+18 TB × 3  =  ~55 TB/year total storage
+// Single large DB node maxes ~10 TB, so you need sharding
+from day 1

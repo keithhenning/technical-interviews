@@ -1,0 +1,5 @@
+POST /config/algorithm
+{
+  "type": "least_connections",
+  "sessionPersistence": "cookie-based"
+}

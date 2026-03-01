@@ -1,0 +1,6 @@
+Key: short_code
+Value: {
+    long_url: "https://...",
+    cached_at: timestamp
+}
+TTL: 86400 seconds (24 hours)

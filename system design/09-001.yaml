@@ -1,0 +1,26 @@
+# Canary deployment: 90% to v1, 10% to v2
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: user-service
+spec:
+  hosts:
+  - user-service
+  http:
+  - match:
+    - headers:
+        user-type:
+          exact: beta-tester
+    route:
+    - destination:
+        host: user-service
+        subset: v2
+  - route:
+    - destination:
+        host: user-service
+        subset: v1
+      weight: 90
+    - destination:
+        host: user-service
+        subset: v2
+      weight: 10

@@ -1,0 +1,8 @@
+// For internal services to check if a request is allowed
+CheckRateLimit(string clientID, string resourceID) ->
+RateLimitResponse
+RateLimitResponse {
+  allowed: boolean,
+  retryAfter: integer (milliseconds, optional),
+  remainingQuota: integer
+}

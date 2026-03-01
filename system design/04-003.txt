@@ -1,0 +1,8 @@
+// Read bandwidth -- each feed response is ~10 post IDs @ 100
+bytes each
+15,600 reads/sec × 1 KB  =  ~15 MB/sec inbound read bandwidth
+// If posts include images (avg 100 KB thumbnail)
+15,600 × 100 KB  =  ~1.5 GB/sec
+// A 1 Gbps NIC = ~125 MB/sec, so you need a CDN for media
+assets
+// Internal API traffic (JSON only) is fine on standard NICs

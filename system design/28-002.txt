@@ -1,0 +1,4 @@
+GET /{short_code}
+Response:
+HTTP 301 Moved Permanently
+Location: https://example.com/very/long/path

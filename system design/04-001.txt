@@ -1,0 +1,10 @@
+// Reads QPS
+450M reads/day  ÷  86,400 sec/day ≈
+                                      5,200 reads/sec
+// Writes QPS
+50M writes/day  ÷  86,400 sec/day ≈
+                                      580 writes/sec
+// Peak multiplier: real traffic is not flat
+// Plan for –35x average for peak hours
+5,200 × 3 ≈
+              15,600 peak reads/sec

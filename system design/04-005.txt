@@ -1,0 +1,17 @@
+// Total budget: 200ms end-to-end
+Network to edge:
+                      20ms  // CDN POP to user
+API Gateway:
+                       5ms  // TLS, routing overhead
+Service A:
+                      10ms  // Business logic
+Cache read:
+                       1ms  // Redis hit
+DB read (cache miss): 50ms  // Network + query
+Service B:
+                      10ms  // Downstream call
+Serialization:
+                       4ms  // JSON encoding
+                     ------
+Total:
+                     100ms  // 100ms headroom for p99 tail

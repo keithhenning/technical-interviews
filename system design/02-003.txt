@@ -1,0 +1,19 @@
+// Rate limit rule stored in Configuration DB
+RateLimitRule {
+  rule_id: string (primary key),
+  client_id: string,
+  resource_id: string,
+  requests_per_unit: integer,
+  time_unit: string,
+  algorithm_type: string,
+  burst_capacity: integer
+}
+// Counter/state stored in Redis
+RateLimitCounter {
+  // Key format:
+  "ratelimit:{algorithm}:{client_id}:{resource_id}"
+  current_count: integer,  // fixed window
+  last_request: timestamp,
+  token_bucket_tokens: integer,  // token bucket
+  expiry: timestamp  // TTL for auto-cleanup
+}

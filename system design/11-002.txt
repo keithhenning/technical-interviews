@@ -1,0 +1,8 @@
+POST /config/health
+{
+  "interval": 10,
+  "timeout": 2,
+  "unhealthyThreshold": 3,
+  "healthyThreshold": 2,
+  "path": "/health"
+}

@@ -1,0 +1,18 @@
+# Only allow order-service to call payment endpoints
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: payment-policy
+spec:
+  selector:
+    matchLabels:
+      app: payment-service
+  rules:
+  - from:
+    - source:
+        principals:
+        ["cluster.local/ns/default/sa/order-service"]
+    to:
+    - operation:
+        methods: ["POST"]
+        paths: ["/api/payments"]

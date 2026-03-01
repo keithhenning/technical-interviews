@@ -1,0 +1,14 @@
+Table: url_mappings
+Primary Key: short_code (string, indexed)
+Attributes:
+  - short_code: string (7 chars)
+  - long_url: text (max 2048 chars)
+  - created_at: timestamp
+  - expires_at: timestamp (nullable)
+  - user_id: string
+  - click_count: integer (updated async)
+  - created_by_ip: string
+Indexes:
+  - Primary: short_code (for fast lookups)
+  - Secondary: user_id (for user's URL list)
+  - Secondary: expires_at (for cleanup jobs)

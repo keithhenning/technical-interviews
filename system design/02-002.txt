@@ -1,0 +1,12 @@
+// For administrators to set rate limits
+CreateRateLimit(RateLimitRule) -> RuleID
+UpdateRateLimit(RuleID, RateLimitRule) -> Success/Failure
+GetRateLimit(RuleID) -> RateLimitRule
+RateLimitRule {
+  clientID: string,
+  resourceID: string,
+  requestsPerUnit: integer,
+  timeUnit: string (second/minute/hour/day),
+  algorithm: string (token_bucket/leaky_bucket/fixed_window),
+  burstCapacity: integer (optional)
+}

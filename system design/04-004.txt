@@ -1,0 +1,19 @@
+ANCHOR
+          300M DAU, 1 post/day write, 50 reads/day
+WRITES
+          300M / 86,400 ≈ 3,470 writes/sec
+          Peak (3x): ~10,400 writes/sec
+READS
+          300M × 50 / 86,400 ≈ 174,000 reads/sec
+          Peak (3x): ~520,000 reads/sec, so you need
+          aggressive caching
+STORAGE
+          300M × 1 KB = 300 GB/day text
+          ~110 TB/year with 3x replication, so sharding
+          required
+MEDIA
+          300M × 5% × 100 KB = 1.5 TB/day in photos
+          Object storage (S3) mandatory, as no DB can absorb
+          this
+BANDWIDTH 520K reads/sec × 1 KB = ~500 MB/sec API
+          Manageable internally; CDN essential for media

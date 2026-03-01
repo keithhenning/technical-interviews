@@ -1,0 +1,13 @@
+POST /api/shorten
+Request:
+{
+    "long_url": "https://example.com/very/long/path",
+    "custom_alias": "my-link",  // optional
+    "expiry_date": "2026-12-31"  // optional
+}
+Response:
+{
+    "short_url": "https://short.ly/abc123",
+    "short_code": "abc123",
+    "created_at": "2026-02-19T10:30:00Z"
+}

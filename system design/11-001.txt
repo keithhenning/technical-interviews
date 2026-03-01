@@ -1,0 +1,7 @@
+POST /config/servers
+{
+  "servers": [
+    {"address": "10.0.1.10:8080", "weight": 1},
+    {"address": "10.0.1.11:8080", "weight": 2}
+  ]
+}
