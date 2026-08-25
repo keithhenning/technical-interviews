@@ -1,0 +1,13 @@
+name: Python syntax gate
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  syntax-gate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Compile every .py file
+        run: python3 .github/scripts/python_syntax_gate.py
