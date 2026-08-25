@@ -1,4 +1,4 @@
-eclass CacheSerializer:
+class CacheSerializer:
     """
     Standardized serialization for
     cache values
