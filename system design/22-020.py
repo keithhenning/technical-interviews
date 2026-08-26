@@ -14,6 +14,6 @@ cache = Cache(
 @cache.cached(timeout=300)  # 5 minutes
 def get_trending_products():
     """Get currently trending products"""
-# Expensive operation
-products = calculate_trending_products()
-return jsonify(products)
+    # Expensive operation
+    products = calculate_trending_products()
+    return jsonify(products)

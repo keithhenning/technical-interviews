@@ -9,21 +9,21 @@ Check if a request from the user is allowed based on
 their tier.
 Returns True if allowed, False if rate limited.
 """
-# Set rate limits based on user tier
-if tier == "premium":
-    max_tokens = 1000
-    refill_rate = 1000 / 60  # 1000 tokens per 60
-    seconds
-else:  # free tier
-    max_tokens = 100
-    refill_rate = 100 / 60
+        # Set rate limits based on user tier
+        if tier == "premium":
+            max_tokens = 1000
+            refill_rate = 1000 / 60  # 1000 tokens per 60
+            seconds
+        else:  # free tier
+            max_tokens = 100
+            refill_rate = 100 / 60
                              # 100 tokens per 60
-    seconds
-# Keys for Redis
-token_key = f"rate_limiter:{user_id}:tokens"
-timestamp_key = f"rate_limiter:{user_id}:last_update"
-# Use Lua script for atomic operations
-script = """
+            seconds
+        # Keys for Redis
+        token_key = f"rate_limiter:{user_id}:tokens"
+        timestamp_key = f"rate_limiter:{user_id}:last_update"
+        # Use Lua script for atomic operations
+        script = """
 local token_key = KEYS[1]
 local timestamp_key = KEYS[2]
 local max_tokens = tonumber(ARGV[1])
@@ -53,10 +53,10 @@ else
     return 0  -- Request denied
 end
 """
-current_time = time.time()
-keys = [token_key, timestamp_key]
-args = [max_tokens, refill_rate, current_time]
-# Execute the script
-result = self.redis.eval(script, len(keys), *keys,
+        current_time = time.time()
+        keys = [token_key, timestamp_key]
+        args = [max_tokens, refill_rate, current_time]
+        # Execute the script
+        result = self.redis.eval(script, len(keys), *keys,
 *args)
-return result == 1
+        return result == 1

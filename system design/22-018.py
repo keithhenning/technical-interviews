@@ -25,21 +25,21 @@ Session = scoped_session(
 # Function to cache query results
 def get_products_cached(category_id,
                         min_price=None):
-def generate_data():
-    session = Session()
-    query = session.query(Product).filter(
+    def generate_data():
+        session = Session()
+        query = session.query(Product).filter(
         Product.category_id == category_id
     )
-    if min_price is not None:
-        query = query.filter(
+        if min_price is not None:
+            query = query.filter(
             Product.price >= min_price
         )
-    return query.all()
-cache_key = (
+        return query.all()
+    cache_key = (
     f"products:cat:{category_id}:"
     f"min_price:{min_price}"
 )
-value = region.get(
+    value = region.get(
     cache_key, createfunc=generate_data
 )
-return value
+    return value

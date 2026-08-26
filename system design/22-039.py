@@ -39,5 +39,5 @@ def get_with_semaphore(cache, key,
         value = cache.get(key)
         if value:
             return value
-# Fallback: regenerate anyway
-return regenerate_func()
+    # Fallback: regenerate anyway
+    return regenerate_func()

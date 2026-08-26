@@ -34,22 +34,22 @@ class UserPreferenceService:
         self.local_cache[local_key] = preferences
         return preferences
     def update_preferences(self, user_id, new_preferences):
-    """Update user preferences"""
-    # Update database
-    self.db.update_preferences(user_id, new_preferences)
-    # Publish event for cache invalidation
-    self.events.publish('user.preferences.updated', {
+        """Update user preferences"""
+        # Update database
+        self.db.update_preferences(user_id, new_preferences)
+        # Publish event for cache invalidation
+        self.events.publish('user.preferences.updated', {
         'user_id': user_id,
         'timestamp': time.time()
     })
-    return new_preferences
-def handle_preference_update(self, event):
-    """Handle preference update events"""
-    user_id = event['user_id']
-    # Invalidate local cache
-    local_key = f"prefs:{user_id}"
-    if local_key in self.local_cache:
-        del self.local_cache[local_key]
-    # Invalidate Redis cache
-    redis_key = f"user:prefs:{user_id}"
-    self.redis.delete(redis_key)
+        return new_preferences
+    def handle_preference_update(self, event):
+        """Handle preference update events"""
+        user_id = event['user_id']
+        # Invalidate local cache
+        local_key = f"prefs:{user_id}"
+        if local_key in self.local_cache:
+            del self.local_cache[local_key]
+        # Invalidate Redis cache
+        redis_key = f"user:prefs:{user_id}"
+        self.redis.delete(redis_key)

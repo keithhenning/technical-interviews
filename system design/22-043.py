@@ -14,30 +14,30 @@ class EdgeToCloudCache:
                     'value': local_value,
                     'source': 'local'
                 }
-# Try CDN next for regional caching
-if self._is_cdn_candidate(key):
-    cdn_value = await self.cdn.get(key)
-    if cdn_value:
-        # Update local cache if available
-        if context.has_local_storage:
-            await self.local.set(
+        # Try CDN next for regional caching
+        if self._is_cdn_candidate(key):
+            cdn_value = await self.cdn.get(key)
+            if cdn_value:
+                # Update local cache if available
+                if context.has_local_storage:
+                    await self.local.set(
                 key, cdn_value
             )
-        return {
+                return {
             'value': cdn_value,
             'source': 'cdn'
         }
-# Finally try cloud cache
-cloud_value = await self.cloud.get(key)
-if cloud_value:
-    # Update lower tiers
-    if self._is_cdn_candidate(key):
-        await self.cdn.set(key, cloud_value)
-    if context.has_local_storage:
-        await self.local.set(key, cloud_value)
-    return {
+        # Finally try cloud cache
+        cloud_value = await self.cloud.get(key)
+        if cloud_value:
+            # Update lower tiers
+            if self._is_cdn_candidate(key):
+                await self.cdn.set(key, cloud_value)
+            if context.has_local_storage:
+                await self.local.set(key, cloud_value)
+            return {
         'value': cloud_value,
         'source': 'cloud'
     }
-# Cache miss at all tiers
-return {'value': None, 'source': None}
+        # Cache miss at all tiers
+        return {'value': None, 'source': None}

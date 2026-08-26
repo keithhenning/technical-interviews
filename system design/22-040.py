@@ -1,4 +1,4 @@
-eclass CacheSerializer:
+class CacheSerializer:
     """
     Standardized serialization for
     cache values
@@ -12,28 +12,28 @@ eclass CacheSerializer:
         if value is None:
             return None
         type_hint = type(value).__name__
-    serialized = json.dumps({
+        serialized = json.dumps({
         'type': type_hint,
         'value': value
-    })
-    return serialized
-@staticmethod
-def deserialize(serialized):
-    """
-    Deserialize value with
-    type restoration
-    """
-    if serialized is None:
-        return None
-    data = json.loads(serialized)
-    value = data['value']
-    # Handle special types
-    if data['type'] == 'datetime':
-        return datetime.datetime.fromisoformat(
+        })
+        return serialized
+    @staticmethod
+    def deserialize(serialized):
+        """
+        Deserialize value with
+        type restoration
+        """
+        if serialized is None:
+            return None
+        data = json.loads(serialized)
+        value = data['value']
+        # Handle special types
+        if data['type'] == 'datetime':
+            return datetime.datetime.fromisoformat(
             value
         )
-    elif data['type'] == 'date':
-        return datetime.date.fromisoformat(
+        elif data['type'] == 'date':
+            return datetime.date.fromisoformat(
             value
         )
-    return value
+        return value

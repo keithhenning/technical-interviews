@@ -10,12 +10,12 @@ def set_compressed(cache, key, value,
     # Store compressed data
     cache.set(key, compressed, **kwargs)
 def get_decompressed(cache, key):
-# Get compressed data
-compressed = cache.get(key)
-if compressed:
-    # Decompress and deserialize
-    serialized = zlib.decompress(compressed)
-    return json.loads(
-        serialized.decode('utf-8')
-    )
-return None
+    # Get compressed data
+    compressed = cache.get(key)
+    if compressed:
+        # Decompress and deserialize
+        serialized = zlib.decompress(compressed)
+        return json.loads(
+            serialized.decode('utf-8')
+        )
+    return None

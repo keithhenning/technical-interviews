@@ -12,22 +12,22 @@ class CausallyConsistentCache:
                 if data.get('version', 0) >= version:
                     return data
         # Fetch from database
-    data = self.db.get(key)
-    # Update cache with version
-    if data:
-        self.redis.set(key, json.dumps(data))
-    return data
-def set(self, key, value):
-    """Set with causal consistency"""
-    # Get current version
-    current = self.db.get(key)
-    next_version = (
+        data = self.db.get(key)
+        # Update cache with version
+        if data:
+            self.redis.set(key, json.dumps(data))
+        return data
+    def set(self, key, value):
+        """Set with causal consistency"""
+        # Get current version
+        current = self.db.get(key)
+        next_version = (
         (current.get('version', 0) + 1)
         if current else 1
     )
-    # Update value with new version
-    value['version'] = next_version
-    # Update database
-    self.db.set(key, value)
-    # Return new version for tracking
-    return next_version
+        # Update value with new version
+        value['version'] = next_version
+        # Update database
+        self.db.set(key, value)
+        # Return new version for tracking
+        return next_version

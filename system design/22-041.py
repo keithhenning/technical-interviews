@@ -34,7 +34,7 @@ class SecureCache:
         key, expire,
         json.dumps(stored_value)
     )
-else:
-    self.redis.set(
+        else:
+            self.redis.set(
         key, json.dumps(stored_value)
     )

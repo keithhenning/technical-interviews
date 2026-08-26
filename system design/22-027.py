@@ -26,15 +26,15 @@ class RealTimeAnalyticsCache:
                 'timestamp': timestamp,
             'value': value
         })
-    return series
-def get_current_rate(self, metric,
+        return series
+    def get_current_rate(self, metric,
                     window_minutes=5):
-    """Calculate current rate of events"""
-    series = self.get_timeseries(
+        """Calculate current rate of events"""
+        series = self.get_timeseries(
         metric, minutes=window_minutes
     )
-    total = sum(
+        total = sum(
         point['value'] for point in series
     )
-    # Events per minute
-    return total / window_minutes
+        # Events per minute
+        return total / window_minutes

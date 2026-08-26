@@ -28,22 +28,22 @@ class ObservableCache:
                     "cache.misses",
             tags={"key": key}
         )
-    # Track latency
-    latency = time.time() - start
-    self.metrics.timing(
+            # Track latency
+            latency = time.time() - start
+            self.metrics.timing(
         "cache.get.latency",
         latency,
         tags={"key": key}
     )
-    return value
-except Exception as e:
-    self.errors += 1
-    self.metrics.increment(
+            return value
+        except Exception as e:
+            self.errors += 1
+            self.metrics.increment(
         "cache.errors",
         tags={
             "operation": "get",
             "key": key
         }
     )
-    logging.error(f"Cache get error: {e}")
-    return None
+            logging.error(f"Cache get error: {e}")
+            return None

@@ -67,8 +67,8 @@ def maxWeddingHappiness(relationships, tables,
                   new_t2.append(guest1)
                   
                   # Calculate score after swap
-                  new_score = table_score(new_t1) +                               
-                              table_score(new_t2)
+                  new_score = (table_score(new_t1) +
+                              table_score(new_t2))
                   gain = new_score - old_score
                   
                   if gain > best_swap_gain:

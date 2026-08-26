@@ -9,14 +9,14 @@ def calculate_product_recommendation(
     Calculate personalized
 product recommendation score
 """
-# Expensive calculation
-similarity_score = compute_similarity(
+    # Expensive calculation
+    similarity_score = compute_similarity(
     user_id, product_id
 )
-popularity_score = get_product_popularity(
+    popularity_score = get_product_popularity(
     product_id
 )
-return (
+    return (
     (0.7 * similarity_score) +
     (0.3 * popularity_score)
 )

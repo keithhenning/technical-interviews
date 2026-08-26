@@ -17,11 +17,11 @@ def get_user(user_id):
     f"SELECT * FROM users "
     f"WHERE id = {user_id}"
 )
-# Store in cache for future requests
-# Expire after 1 hour
-redis_client.setex(
+    # Store in cache for future requests
+    # Expire after 1 hour
+    redis_client.setex(
     f"user:{user_id}",
     3600,
     json.dumps(user)
-)
-return user
+    )
+    return user

@@ -23,5 +23,5 @@ class PredictiveCache:
         if access['key'] == key
     )
 }
-# Predict using model
-return self.model(features)
+        # Predict using model
+        return self.model(features)
