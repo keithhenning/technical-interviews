@@ -46,13 +46,13 @@ std::vector<std::string> processEvidence(
     int hoursLeftToday = hoursPerDay;
     
     // Max heap
-    using EvidenceQueue = std::priority_queue
-        Evidence, 
-        std::vector<Evidence>, 
+    using EvidenceQueue = std::priority_queue<
+        Evidence,
+        std::vector<Evidence>,
         EvidenceComparator>;
     
-    EvidenceQueue evidenceQueue(
-        EvidenceComparator(currentDay));
+    EvidenceQueue evidenceQueue{
+        EvidenceComparator(currentDay)};
     
     for (const auto& item : evidence) {
         evidenceQueue.push(item);
@@ -85,8 +85,8 @@ std::vector<std::string> processEvidence(
                     evidenceQueue.pop();
                 }
                 
-                EvidenceQueue updatedQueue(
-                    EvidenceComparator(currentDay));
+                EvidenceQueue updatedQueue{
+                    EvidenceComparator(currentDay)};
                 
                 for (const auto& e : remaining) {
                     if (e.daysUntilExpiration > currentDay) {

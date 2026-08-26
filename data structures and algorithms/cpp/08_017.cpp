@@ -9,7 +9,7 @@ private:
         K key;
         V value;
         int frequency;
-        std::chrono::time_point
+        std::chrono::time_point<
             std::chrono::steady_clock> lastAccess;
         
         CacheItem(K key, V value) 
@@ -24,7 +24,7 @@ private:
         double getScore() const {
             // Higher frequency and recency = higher score
             auto now = std::chrono::steady_clock::now();
-            auto duration = std::chrono::duration_cast
+            auto duration = std::chrono::duration_cast<
                 std::chrono::milliseconds>(
                     now - lastAccess).count();
             double recencyScore = 1.0 / 

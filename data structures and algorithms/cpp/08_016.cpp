@@ -5,13 +5,13 @@
 #include <queue>
 
 std::vector<std::string> resolveDependencies(
-    const std::unordered_map
-        std::string, 
+    const std::unordered_map<
+        std::string,
         std::vector<std::string>>& tasks) {
-    
+
     // Build adjacency list and in-degree count
-    std::unordered_map
-        std::string, 
+    std::unordered_map<
+        std::string,
         std::vector<std::string>> graph;
     std::unordered_map<std::string, int> inDegree;
     

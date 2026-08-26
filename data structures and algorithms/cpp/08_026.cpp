@@ -28,8 +28,8 @@ struct Operation {
 
 std::vector<std::map<std::string, int>> finalCacheState(
         int n, 
-        const std::vector
-            std::tuple<int, std::string, int, int>>& operations, 
+        const std::vector<
+            std::tuple<int, std::string, int, int>>& operations,
         const std::vector<std::vector<int>>& delays) {
     
     // Initialize caches for each node
@@ -37,9 +37,9 @@ std::vector<std::map<std::string, int>> finalCacheState(
     std::vector<std::map<std::string, int>> timestamps(n);
     
     // Priority queue for events with timestamps
-    std::priority_queue
-        Operation, 
-        std::vector<Operation>, 
+    std::priority_queue<
+        Operation,
+        std::vector<Operation>,
         std::greater<Operation>> eventQueue;
     
     // Add initial operations to queue
