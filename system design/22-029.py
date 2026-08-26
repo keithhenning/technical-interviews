@@ -26,15 +26,15 @@ class EventuallyConsistentCache:
             'operation': 'set',
             'timestamp': time.time()
         })
-def handle_events(self, event):
-    """Event handler for cache updates"""
-    if event['operation'] == 'set':
-        key = event['key']
-        # Fetch latest from DB
-        data = self.db.get(key)
-        if data:
-            self.redis.set(
-                key, json.dumps(data)
-            )
-    elif event['operation'] == 'delete':
-        self.redis.delete(event['key'])
+    def handle_events(self, event):
+        """Event handler for cache updates"""
+        if event['operation'] == 'set':
+            key = event['key']
+            # Fetch latest from DB
+            data = self.db.get(key)
+            if data:
+                self.redis.set(
+                    key, json.dumps(data)
+                )
+        elif event['operation'] == 'delete':
+            self.redis.delete(event['key'])

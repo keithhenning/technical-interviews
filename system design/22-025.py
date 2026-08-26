@@ -30,7 +30,7 @@ class MicroserviceCache:
                     related['type'],
                     related['id']
                 )
-def invalidate(self, entity_type, entity_id):
-    key = (f"{self.service}:{entity_type}:"
-           f"{entity_id}")
-    self.redis.delete(key)
+    def invalidate(self, entity_type, entity_id):
+        key = (f"{self.service}:{entity_type}:"
+               f"{entity_id}")
+        self.redis.delete(key)

@@ -14,20 +14,20 @@ class SegmentedCache:
     def get(self, segment, key):
         full_key = f"{segment}:{key}"
         return self.redis.get(full_key)
-def set(self, segment, key, value):
-    full_key = f"{segment}:{key}"
-    ttl = self.segments.get(
-        segment, 300  # Default 5 min
-    )
-    self.redis.setex(full_key, ttl, value)
-def clear_segment(self, segment):
-    """Clear all keys in a segment"""
-    cursor = 0
-    while True:
-        cursor, keys = self.redis.scan(
-            cursor, f"{segment}:*", 100
+    def set(self, segment, key, value):
+        full_key = f"{segment}:{key}"
+        ttl = self.segments.get(
+            segment, 300  # Default 5 min
         )
-        if keys:
-            self.redis.delete(*keys)
-        if cursor == 0:
-            break
+        self.redis.setex(full_key, ttl, value)
+    def clear_segment(self, segment):
+        """Clear all keys in a segment"""
+        cursor = 0
+        while True:
+            cursor, keys = self.redis.scan(
+                cursor, f"{segment}:*", 100
+            )
+            if keys:
+                self.redis.delete(*keys)
+            if cursor == 0:
+                break
