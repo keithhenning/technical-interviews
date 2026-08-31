@@ -5,7 +5,7 @@ on:
   pull_request:
 
 jobs:
-  syntax-gate:
+  python:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -13,3 +13,19 @@ jobs:
         with:
           python-version: "3.12"
       - run: python3 tools/syntax_gate.py
+
+  # C# is a separate job rather than a step in the one above, so a broken .NET toolchain reads as
+  # "the C# gate did not run" instead of turning the Python result red for an unrelated reason.
+  # The gate itself refuses loudly if it cannot find Roslyn, so a missing SDK cannot degrade into
+  # a silent pass.
+  csharp:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "8.0.x"
+      - run: python3 tools/csharp_gate.py
