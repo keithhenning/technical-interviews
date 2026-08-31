@@ -1,0 +1,12 @@
+# Pinned, not floored, for tools/cpp_java_gate.py.
+#
+# The gate's ALLOW set names three files that fail ONLY because tree-sitter-cpp cannot parse a
+# brace-initialised default argument. That is a property of a specific grammar version. A floor
+# like >=0.23 means a grammar upgrade can silently empty or extend that set between two runs of
+# the same commit, and the gate would then either fail on a stale allowlist or quietly stop
+# checking a construct. Bump these deliberately, in a diff, and re-run the gate.
+#
+# Versions verified on 31 August 2026, Python 3.12.
+tree-sitter==0.26.0
+tree-sitter-cpp==0.23.4
+tree-sitter-java==0.23.5

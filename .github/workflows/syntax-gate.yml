@@ -29,3 +29,16 @@ jobs:
         with:
           dotnet-version: "8.0.x"
       - run: python3 tools/csharp_gate.py
+
+  # C++ and Java, by parser rather than by compiler, for the reason in tools/cpp_java_gate.py.
+  # Separate job again: a broken parser install should read as "this gate did not run", not as a
+  # red mark on the other two.
+  cpp-java:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r tools/requirements-gate.txt
+      - run: python3 tools/cpp_java_gate.py
