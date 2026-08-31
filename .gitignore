@@ -1,0 +1,8 @@
+# Byte-compiled Python. This repository ships .py source as book content and runs
+# tools/syntax_gate.py over it in CI, so anyone who runs the gate locally -- or any
+# py_compile sweep -- generates __pycache__ beside the published files. Without this
+# rule a `git add -A` sweeps 294 binary artifacts into a public repository, which is
+# exactly what happened on 31 Aug 2026 and was caught in pre-push review rather than
+# by anything automatic.
+__pycache__/
+*.py[cod]

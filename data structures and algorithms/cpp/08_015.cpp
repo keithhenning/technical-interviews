@@ -45,7 +45,7 @@ std::vector<std::pair<int, int>> assignRequests(
     }
     
     // Priority queue for servers: (load, lastActive, serverId)
-    std::priority_queue
+    std::priority_queue<
         std::tuple<int, int, int>, 
         std::vector<std::tuple<int, int, int>>, 
         ServerComparator> serverHeap;
