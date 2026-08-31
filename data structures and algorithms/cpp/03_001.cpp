@@ -1,10 +1,10 @@
 #include <iostream>
 
-std::string sayHellO() {
+std::string sayHello() {
       return "Hello World";
 }
 
 int main() {
-      std::cout << sayHellO() << std::endl;
+      std::cout << sayHello() << std::endl;
       return 0;
 }
