@@ -292,7 +292,7 @@ public class MainClass
 
       // Add nodes
       int[] valuesToAdd = { 50, 30, 70, 20, 40, 60, 80 };
-      for (int value : valuesToAdd)
+      foreach (int value in valuesToAdd)
       {
          tree.AddChild(value);
       }

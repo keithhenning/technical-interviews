@@ -1,12 +1,12 @@
 public class HelloWorld
 {
-   public static String sayHello()
+   public static string SayHello()
    {
       return "Hello World";
    }
 
-   public static void main(String[] args)
+   public static void Main(string[] args)
    {
-      System.out.println(sayHello());
+      System.Console.WriteLine(SayHello());
    }
 }

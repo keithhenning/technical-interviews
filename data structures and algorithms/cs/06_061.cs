@@ -1,3 +1,4 @@
+using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 
@@ -145,8 +146,6 @@ public class NQueens
       }
    }
 }
-
-using NUnit.Framework;
 
 /**
  * Test class for NQueens solution

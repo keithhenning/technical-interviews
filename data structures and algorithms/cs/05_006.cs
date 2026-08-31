@@ -1,4 +1,4 @@
-k/**
+/**
  * Returns the top element without removing it
  */
 public object Peek(Stack<object> stack)
