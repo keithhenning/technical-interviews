@@ -60,9 +60,20 @@ import tempfile
 # file rather than switch the gate off, and the gate tells you when an entry stops being needed.
 ALLOW = set()
 
-# syntax_gate.py's floor idiom. 278 .cs files under the book directories plus this gate's own
-# helper, which is a .cs file and is deliberately not exempt from its own check.
-EXPECTED_FILES = 279
+# A DATED OBSERVATION, NOT A CONSTRAINT. Measured 31 August 2026: 278 .cs files under the book
+# directories plus this gate's own helper, which is a .cs file and is deliberately not exempt
+# from its own check.
+#
+# It appears only in an error message and it drifts every time the book grows -- this number
+# moved from 278 to 279 within a day of being written, when the helper was added, and 8b3c480
+# added a .cpp and removed a .java in the same window. A number in a message that slowly stops
+# being true is a small lie nobody is accountable for, so it is labelled with the date it was
+# true rather than presented as a rule.
+#
+# FLOOR below is different and must NOT get the same treatment: its whole job is to catch "the
+# walk found nothing", and a floor derived from the current tree always equals the current
+# count and could therefore never fire. Hand-set and deliberately loose is correct there.
+EXPECTED_FILES = 279  # observed 2026-08-31
 FLOOR = 250
 
 CANARY = """// Deliberately unparseable. Parsed on every run of tools/csharp_gate.py.
