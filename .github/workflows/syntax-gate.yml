@@ -13,6 +13,11 @@ jobs:
         with:
           python-version: "3.12"
       - run: python3 tools/syntax_gate.py
+      # #360. Stdlib-only and needs nothing the step above did not already install, so it rides in
+      # the same job rather than earning a fourth. It looks for the fixed-width EXPORT SIGNATURE
+      # rather than for broken syntax, which is why it is not redundant with the gate above: the
+      # February 2026 wrap damaged .txt, .sql and .yaml as well, and no parser will ever read those.
+      - run: python3 tools/column_cap_check.py
 
   # C# is a separate job rather than a step in the one above, so a broken .NET toolchain reads as
   # "the C# gate did not run" instead of turning the Python result red for an unrelated reason.
