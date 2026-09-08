@@ -45,6 +45,11 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 WATCHED = [
     "system design",
     "data structures and algorithms",
+    # Added 8 September 2026 with the Data Science book's 88 examples. A populated book export that
+    # is not in this list is a book this check cannot see, and a gate ranging over a set that
+    # excludes the newest content is the failure mode this file's own docstring is about. Measured
+    # on arrival: longest line 106, comfortably above the 75 floor.
+    "data science",
 ]
 
 # Extensions the formatter touched. Deliberately WIDER than any parser gate's set: the whole point

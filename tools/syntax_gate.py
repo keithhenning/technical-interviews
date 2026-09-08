@@ -14,7 +14,7 @@ for dp, dn, fn in os.walk("."):
         except SyntaxError as e:
             if rel not in ALLOW: bad.append("%s:%s: %s" % (rel, e.lineno, e.msg))
 print("scanned %d .py files" % scanned)
-if scanned < 250: sys.exit("GATE BROKEN: scanned only %d files, expected ~295" % scanned)
+if scanned < 300: sys.exit("GATE BROKEN: scanned only %d files, expected ~357" % scanned)
 for b in bad: print("FAIL", b)
 for s in stale: print("STALE ALLOWLIST ENTRY (now compiles, remove it):", s)
 sys.exit(1 if bad or stale else 0)
